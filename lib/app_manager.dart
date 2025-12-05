@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:movie_project/configs/constants/colors/colors.dart';
 import 'package:movie_project/configs/routes/router.dart';
 import 'package:movie_project/presentation/screens/settings/bloc/settings_bloc.dart';
 
@@ -31,8 +32,8 @@ class MyApp extends StatelessWidget {
                 ],
                 supportedLocales: S.delegate.supportedLocales,
                 routerConfig: _appRouter.config(),
-                theme: ThemeData(scaffoldBackgroundColor: Color(0xFF030713),
-                  colorScheme: ColorScheme.dark(primary: Color(0xFF030713))
+                theme: ThemeData(scaffoldBackgroundColor: MovieColors.background,
+                  colorScheme: ColorScheme.dark(primary: MovieColors.background)
                 ),
               );
             },

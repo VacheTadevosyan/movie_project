@@ -108,6 +108,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Movie Details`
+  String get movieDetails {
+    return Intl.message(
+      'Movie Details',
+      name: 'movieDetails',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Overview`
+  String get overview {
+    return Intl.message('Overview', name: 'overview', desc: '', args: []);
+  }
+
+  /// `Genres`
+  String get genres {
+    return Intl.message('Genres', name: 'genres', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

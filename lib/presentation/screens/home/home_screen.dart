@@ -1,17 +1,39 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:movie_project/configs/constants/Strings/strings.dart';
 import 'package:movie_project/configs/constants/colors/colors.dart';
 import 'package:movie_project/configs/routes/router.dart';
+import 'package:movie_project/data/repository/movie_repository.dart';
+import 'package:movie_project/domain/model/movie_model/movie_resultes/movie_results.dart';
 import 'package:movie_project/presentation/widgets/bottoms.dart';
 import 'package:movie_project/presentation/widgets/movies_widgets.dart';
 
 import 'bloc/home_bloc.dart';
 
 @RoutePage()
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  final PagingController<int, MovieResults> _pagingController =
+      PagingController<int, MovieResults>(
+        getNextPageKey: (state) =>
+            state.lastPageIsEmpty ? null : state.nextIntPageKey,
+        fetchPage: (pageKey) =>
+            MoviesRepository().getMovieResults(page: pageKey),
+      );
+
+  @override
+  void dispose() {
+    _pagingController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,51 +41,70 @@ class HomeScreen extends StatelessWidget {
       create: (context) => HomeBloc()..add(const HomeEvent.load()),
       child: Scaffold(
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           title: Text(
             MovieStrings.homeTitle(context),
             style: TextStyle(color: MovieColors.whiteText),
           ),
           backgroundColor: MovieColors.darkBlue,
         ),
-        body: BlocBuilder<HomeBloc, HomeState>(
-          builder: (context, state) {
-            return state.when(
-              initial: () => const SizedBox(),
-              load: () => const Center(child: CircularProgressIndicator()),
-              loaded: (movies) => ListView.builder(
-                itemCount: 7,
-                itemBuilder: (context, index) {
+
+        body: PagingListener<int, MovieResults>(
+          controller: _pagingController,
+          builder: (context, state, fetchNextPage) {
+            return PagedListView<int, MovieResults>(
+              state: state,
+              fetchNextPage: fetchNextPage,
+              builderDelegate: PagedChildBuilderDelegate<MovieResults>(
+                firstPageProgressIndicatorBuilder: (context) =>
+                    Center(child: CircularProgressIndicator()),
+                newPageProgressIndicatorBuilder: (context) => const Padding(
+                  padding: EdgeInsets.all(16),
+                  child: Center(child: CircularProgressIndicator()),
+                ),
+                itemBuilder: (context, movie, index) {
                   if (index == 0) {
-                    return Padding(
-                      padding: const EdgeInsets.only(top: 16, left: 16),
-                      child: Text(
-                        MovieStrings.popularMovies(context),
-                        style: TextStyle(fontSize: 16),
-                      ),
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const SizedBox(height: 16),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 16),
+                          child: Text(
+                            MovieStrings.popularMovies(context),
+                            style: const TextStyle(fontSize: 16),
+                          ),
+                        ),
+                        MoviesWidget(
+                          title: movie.title,
+                          date: movie.releaseDate,
+                          voteAverage: movie.voteAverage,
+                          voteCount: movie.voteCount,
+                          pictureUrl: movie.posterPath,
+                          callback: () {
+                            context.pushRoute(MovieInfoRoute(movie: movie));
+                          },
+                        ),
+                      ],
                     );
                   }
-                  final movie = movies.results[index - 1];
+
                   return MoviesWidget(
                     title: movie.title,
                     date: movie.releaseDate,
                     voteAverage: movie.voteAverage,
                     voteCount: movie.voteCount,
                     pictureUrl: movie.posterPath,
+                    callback: () {
+                      context.pushRoute(MovieInfoRoute(movie: movie));
+                    },
                   );
                 },
-              ),
-              error: (String massage) => Center(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 32.0),
-                  child: Text(
-                    massage,
-                    style: TextStyle(color: MovieColors.whiteText),
-                  ),
-                ),
               ),
             );
           },
         ),
+
         bottomNavigationBar: BottomAppBar(
           height: MediaQuery.sizeOf(context).height / 9,
           color: MovieColors.darkBlue,
@@ -80,7 +121,7 @@ class HomeScreen extends StatelessWidget {
               Bottoms(
                 icon: Icons.search,
                 onTap: () {
-                  context.pushRoute(SearchRoute());
+                  context.pushRoute(const SearchRoute());
                 },
                 text: MovieStrings.searchBottom(context),
                 textColor: MovieColors.whiteText,
@@ -89,7 +130,7 @@ class HomeScreen extends StatelessWidget {
               Bottoms(
                 icon: Icons.settings,
                 onTap: () {
-                  context.router.replace(SettingsRoute());
+                  context.router.replace(const SettingsRoute());
                 },
                 text: MovieStrings.settingsBottom(context),
                 textColor: MovieColors.whiteText,

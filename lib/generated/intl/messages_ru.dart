@@ -23,8 +23,11 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "about": MessageLookupByLibrary.simpleMessage("О приложении"),
+    "genres": MessageLookupByLibrary.simpleMessage("Жанры"),
     "home": MessageLookupByLibrary.simpleMessage("Главная"),
+    "movieDetails": MessageLookupByLibrary.simpleMessage("О фильме"),
     "movieExplorer": MessageLookupByLibrary.simpleMessage("Фильмы"),
+    "overview": MessageLookupByLibrary.simpleMessage("Описание"),
     "popularMovies": MessageLookupByLibrary.simpleMessage("Популярные фильмы"),
     "search": MessageLookupByLibrary.simpleMessage("Поиск"),
     "selectLanguage": MessageLookupByLibrary.simpleMessage("Выбрать язык"),

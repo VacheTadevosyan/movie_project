@@ -12,6 +12,8 @@ class SearchScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
+
         title: Text(MovieStrings.searchTitle(context), style: TextStyle(color: Colors.white)),
         backgroundColor: Color(0x101829FF),
       ),

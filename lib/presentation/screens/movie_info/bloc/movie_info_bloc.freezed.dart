@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'home_bloc.dart';
+part of 'movie_info_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -12,7 +12,7 @@ part of 'home_bloc.dart';
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
-mixin _$HomeEvent {
+mixin _$MovieInfoEvent {
 
 
 
@@ -20,7 +20,7 @@ mixin _$HomeEvent {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is HomeEvent);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is MovieInfoEvent);
 }
 
 
@@ -29,20 +29,20 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'HomeEvent()';
+  return 'MovieInfoEvent()';
 }
 
 
 }
 
 /// @nodoc
-class $HomeEventCopyWith<$Res>  {
-$HomeEventCopyWith(HomeEvent _, $Res Function(HomeEvent) __);
+class $MovieInfoEventCopyWith<$Res>  {
+$MovieInfoEventCopyWith(MovieInfoEvent _, $Res Function(MovieInfoEvent) __);
 }
 
 
-/// Adds pattern-matching-related methods to [HomeEvent].
-extension HomeEventPatterns on HomeEvent {
+/// Adds pattern-matching-related methods to [MovieInfoEvent].
+extension MovieInfoEventPatterns on MovieInfoEvent {
 /// A variant of `map` that fallback to returning `orElse`.
 ///
 /// It is equivalent to doing:
@@ -55,12 +55,12 @@ extension HomeEventPatterns on HomeEvent {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( MovieLoadEvent value)?  load,TResult Function( MovieLoadedEvent value)?  loaded,TResult Function( MovieErrorEvent value)?  error,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( MovieInfoLoad value)?  load,TResult Function( MovieInfoLoaded value)?  loaded,TResult Function( MovieInfoError value)?  error,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
-case MovieLoadEvent() when load != null:
-return load(_that);case MovieLoadedEvent() when loaded != null:
-return loaded(_that);case MovieErrorEvent() when error != null:
+case MovieInfoLoad() when load != null:
+return load(_that);case MovieInfoLoaded() when loaded != null:
+return loaded(_that);case MovieInfoError() when error != null:
 return error(_that);case _:
   return orElse();
 
@@ -79,12 +79,12 @@ return error(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( MovieLoadEvent value)  load,required TResult Function( MovieLoadedEvent value)  loaded,required TResult Function( MovieErrorEvent value)  error,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( MovieInfoLoad value)  load,required TResult Function( MovieInfoLoaded value)  loaded,required TResult Function( MovieInfoError value)  error,}){
 final _that = this;
 switch (_that) {
-case MovieLoadEvent():
-return load(_that);case MovieLoadedEvent():
-return loaded(_that);case MovieErrorEvent():
+case MovieInfoLoad():
+return load(_that);case MovieInfoLoaded():
+return loaded(_that);case MovieInfoError():
 return error(_that);case _:
   throw StateError('Unexpected subclass');
 
@@ -102,12 +102,12 @@ return error(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( MovieLoadEvent value)?  load,TResult? Function( MovieLoadedEvent value)?  loaded,TResult? Function( MovieErrorEvent value)?  error,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( MovieInfoLoad value)?  load,TResult? Function( MovieInfoLoaded value)?  loaded,TResult? Function( MovieInfoError value)?  error,}){
 final _that = this;
 switch (_that) {
-case MovieLoadEvent() when load != null:
-return load(_that);case MovieLoadedEvent() when loaded != null:
-return loaded(_that);case MovieErrorEvent() when error != null:
+case MovieInfoLoad() when load != null:
+return load(_that);case MovieInfoLoaded() when loaded != null:
+return loaded(_that);case MovieInfoError() when error != null:
 return error(_that);case _:
   return null;
 
@@ -127,9 +127,9 @@ return error(_that);case _:
 
 @optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  load,TResult Function()?  loaded,TResult Function()?  error,required TResult orElse(),}) {final _that = this;
 switch (_that) {
-case MovieLoadEvent() when load != null:
-return load();case MovieLoadedEvent() when loaded != null:
-return loaded();case MovieErrorEvent() when error != null:
+case MovieInfoLoad() when load != null:
+return load();case MovieInfoLoaded() when loaded != null:
+return loaded();case MovieInfoError() when error != null:
 return error();case _:
   return orElse();
 
@@ -150,9 +150,9 @@ return error();case _:
 
 @optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  load,required TResult Function()  loaded,required TResult Function()  error,}) {final _that = this;
 switch (_that) {
-case MovieLoadEvent():
-return load();case MovieLoadedEvent():
-return loaded();case MovieErrorEvent():
+case MovieInfoLoad():
+return load();case MovieInfoLoaded():
+return loaded();case MovieInfoError():
 return error();case _:
   throw StateError('Unexpected subclass');
 
@@ -172,9 +172,9 @@ return error();case _:
 
 @optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  load,TResult? Function()?  loaded,TResult? Function()?  error,}) {final _that = this;
 switch (_that) {
-case MovieLoadEvent() when load != null:
-return load();case MovieLoadedEvent() when loaded != null:
-return loaded();case MovieErrorEvent() when error != null:
+case MovieInfoLoad() when load != null:
+return load();case MovieInfoLoaded() when loaded != null:
+return loaded();case MovieInfoError() when error != null:
 return error();case _:
   return null;
 
@@ -186,8 +186,8 @@ return error();case _:
 /// @nodoc
 
 
-class MovieLoadEvent implements HomeEvent {
-  const MovieLoadEvent();
+class MovieInfoLoad implements MovieInfoEvent {
+  const MovieInfoLoad();
   
 
 
@@ -197,7 +197,7 @@ class MovieLoadEvent implements HomeEvent {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is MovieLoadEvent);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is MovieInfoLoad);
 }
 
 
@@ -206,7 +206,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'HomeEvent.load()';
+  return 'MovieInfoEvent.load()';
 }
 
 
@@ -218,8 +218,8 @@ String toString() {
 /// @nodoc
 
 
-class MovieLoadedEvent implements HomeEvent {
-  const MovieLoadedEvent();
+class MovieInfoLoaded implements MovieInfoEvent {
+  const MovieInfoLoaded();
   
 
 
@@ -229,7 +229,7 @@ class MovieLoadedEvent implements HomeEvent {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is MovieLoadedEvent);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is MovieInfoLoaded);
 }
 
 
@@ -238,7 +238,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'HomeEvent.loaded()';
+  return 'MovieInfoEvent.loaded()';
 }
 
 
@@ -250,8 +250,8 @@ String toString() {
 /// @nodoc
 
 
-class MovieErrorEvent implements HomeEvent {
-  const MovieErrorEvent();
+class MovieInfoError implements MovieInfoEvent {
+  const MovieInfoError();
   
 
 
@@ -261,7 +261,7 @@ class MovieErrorEvent implements HomeEvent {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is MovieErrorEvent);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is MovieInfoError);
 }
 
 
@@ -270,7 +270,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'HomeEvent.error()';
+  return 'MovieInfoEvent.error()';
 }
 
 
@@ -280,7 +280,7 @@ String toString() {
 
 
 /// @nodoc
-mixin _$HomeState {
+mixin _$MovieInfoState {
 
 
 
@@ -288,7 +288,7 @@ mixin _$HomeState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is HomeState);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is MovieInfoState);
 }
 
 
@@ -297,20 +297,20 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'HomeState()';
+  return 'MovieInfoState()';
 }
 
 
 }
 
 /// @nodoc
-class $HomeStateCopyWith<$Res>  {
-$HomeStateCopyWith(HomeState _, $Res Function(HomeState) __);
+class $MovieInfoStateCopyWith<$Res>  {
+$MovieInfoStateCopyWith(MovieInfoState _, $Res Function(MovieInfoState) __);
 }
 
 
-/// Adds pattern-matching-related methods to [HomeState].
-extension HomeStatePatterns on HomeState {
+/// Adds pattern-matching-related methods to [MovieInfoState].
+extension MovieInfoStatePatterns on MovieInfoState {
 /// A variant of `map` that fallback to returning `orElse`.
 ///
 /// It is equivalent to doing:
@@ -323,13 +323,13 @@ extension HomeStatePatterns on HomeState {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( Initial value)?  initial,TResult Function( MovieLoadState value)?  load,TResult Function( MovieLoadedState value)?  loaded,TResult Function( MovieErrorState value)?  error,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( MovieInfoInitialState value)?  initial,TResult Function( MovieInfoloadState value)?  load,TResult Function( MovieInfoLoadedState value)?  loaded,TResult Function( MovieInfoErrorState value)?  error,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
-case Initial() when initial != null:
-return initial(_that);case MovieLoadState() when load != null:
-return load(_that);case MovieLoadedState() when loaded != null:
-return loaded(_that);case MovieErrorState() when error != null:
+case MovieInfoInitialState() when initial != null:
+return initial(_that);case MovieInfoloadState() when load != null:
+return load(_that);case MovieInfoLoadedState() when loaded != null:
+return loaded(_that);case MovieInfoErrorState() when error != null:
 return error(_that);case _:
   return orElse();
 
@@ -348,13 +348,13 @@ return error(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( Initial value)  initial,required TResult Function( MovieLoadState value)  load,required TResult Function( MovieLoadedState value)  loaded,required TResult Function( MovieErrorState value)  error,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( MovieInfoInitialState value)  initial,required TResult Function( MovieInfoloadState value)  load,required TResult Function( MovieInfoLoadedState value)  loaded,required TResult Function( MovieInfoErrorState value)  error,}){
 final _that = this;
 switch (_that) {
-case Initial():
-return initial(_that);case MovieLoadState():
-return load(_that);case MovieLoadedState():
-return loaded(_that);case MovieErrorState():
+case MovieInfoInitialState():
+return initial(_that);case MovieInfoloadState():
+return load(_that);case MovieInfoLoadedState():
+return loaded(_that);case MovieInfoErrorState():
 return error(_that);case _:
   throw StateError('Unexpected subclass');
 
@@ -372,13 +372,13 @@ return error(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( Initial value)?  initial,TResult? Function( MovieLoadState value)?  load,TResult? Function( MovieLoadedState value)?  loaded,TResult? Function( MovieErrorState value)?  error,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( MovieInfoInitialState value)?  initial,TResult? Function( MovieInfoloadState value)?  load,TResult? Function( MovieInfoLoadedState value)?  loaded,TResult? Function( MovieInfoErrorState value)?  error,}){
 final _that = this;
 switch (_that) {
-case Initial() when initial != null:
-return initial(_that);case MovieLoadState() when load != null:
-return load(_that);case MovieLoadedState() when loaded != null:
-return loaded(_that);case MovieErrorState() when error != null:
+case MovieInfoInitialState() when initial != null:
+return initial(_that);case MovieInfoloadState() when load != null:
+return load(_that);case MovieInfoLoadedState() when loaded != null:
+return loaded(_that);case MovieInfoErrorState() when error != null:
 return error(_that);case _:
   return null;
 
@@ -398,10 +398,10 @@ return error(_that);case _:
 
 @optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  load,TResult Function( List<MovieResults> movie)?  loaded,TResult Function( String massage)?  error,required TResult orElse(),}) {final _that = this;
 switch (_that) {
-case Initial() when initial != null:
-return initial();case MovieLoadState() when load != null:
-return load();case MovieLoadedState() when loaded != null:
-return loaded(_that.movie);case MovieErrorState() when error != null:
+case MovieInfoInitialState() when initial != null:
+return initial();case MovieInfoloadState() when load != null:
+return load();case MovieInfoLoadedState() when loaded != null:
+return loaded(_that.movie);case MovieInfoErrorState() when error != null:
 return error(_that.massage);case _:
   return orElse();
 
@@ -422,10 +422,10 @@ return error(_that.massage);case _:
 
 @optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  load,required TResult Function( List<MovieResults> movie)  loaded,required TResult Function( String massage)  error,}) {final _that = this;
 switch (_that) {
-case Initial():
-return initial();case MovieLoadState():
-return load();case MovieLoadedState():
-return loaded(_that.movie);case MovieErrorState():
+case MovieInfoInitialState():
+return initial();case MovieInfoloadState():
+return load();case MovieInfoLoadedState():
+return loaded(_that.movie);case MovieInfoErrorState():
 return error(_that.massage);case _:
   throw StateError('Unexpected subclass');
 
@@ -445,10 +445,10 @@ return error(_that.massage);case _:
 
 @optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  load,TResult? Function( List<MovieResults> movie)?  loaded,TResult? Function( String massage)?  error,}) {final _that = this;
 switch (_that) {
-case Initial() when initial != null:
-return initial();case MovieLoadState() when load != null:
-return load();case MovieLoadedState() when loaded != null:
-return loaded(_that.movie);case MovieErrorState() when error != null:
+case MovieInfoInitialState() when initial != null:
+return initial();case MovieInfoloadState() when load != null:
+return load();case MovieInfoLoadedState() when loaded != null:
+return loaded(_that.movie);case MovieInfoErrorState() when error != null:
 return error(_that.massage);case _:
   return null;
 
@@ -460,8 +460,8 @@ return error(_that.massage);case _:
 /// @nodoc
 
 
-class Initial implements HomeState {
-  const Initial();
+class MovieInfoInitialState implements MovieInfoState {
+  const MovieInfoInitialState();
   
 
 
@@ -471,7 +471,7 @@ class Initial implements HomeState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Initial);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is MovieInfoInitialState);
 }
 
 
@@ -480,7 +480,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'HomeState.initial()';
+  return 'MovieInfoState.initial()';
 }
 
 
@@ -492,8 +492,8 @@ String toString() {
 /// @nodoc
 
 
-class MovieLoadState implements HomeState {
-  const MovieLoadState();
+class MovieInfoloadState implements MovieInfoState {
+  const MovieInfoloadState();
   
 
 
@@ -503,7 +503,7 @@ class MovieLoadState implements HomeState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is MovieLoadState);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is MovieInfoloadState);
 }
 
 
@@ -512,7 +512,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'HomeState.load()';
+  return 'MovieInfoState.load()';
 }
 
 
@@ -524,8 +524,8 @@ String toString() {
 /// @nodoc
 
 
-class MovieLoadedState implements HomeState {
-  const MovieLoadedState({required final  List<MovieResults> movie}): _movie = movie;
+class MovieInfoLoadedState implements MovieInfoState {
+  const MovieInfoLoadedState({required final  List<MovieResults> movie}): _movie = movie;
   
 
  final  List<MovieResults> _movie;
@@ -536,17 +536,17 @@ class MovieLoadedState implements HomeState {
 }
 
 
-/// Create a copy of HomeState
+/// Create a copy of MovieInfoState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$MovieLoadedStateCopyWith<MovieLoadedState> get copyWith => _$MovieLoadedStateCopyWithImpl<MovieLoadedState>(this, _$identity);
+$MovieInfoLoadedStateCopyWith<MovieInfoLoadedState> get copyWith => _$MovieInfoLoadedStateCopyWithImpl<MovieInfoLoadedState>(this, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is MovieLoadedState&&const DeepCollectionEquality().equals(other._movie, _movie));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is MovieInfoLoadedState&&const DeepCollectionEquality().equals(other._movie, _movie));
 }
 
 
@@ -555,15 +555,15 @@ int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(
 
 @override
 String toString() {
-  return 'HomeState.loaded(movie: $movie)';
+  return 'MovieInfoState.loaded(movie: $movie)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $MovieLoadedStateCopyWith<$Res> implements $HomeStateCopyWith<$Res> {
-  factory $MovieLoadedStateCopyWith(MovieLoadedState value, $Res Function(MovieLoadedState) _then) = _$MovieLoadedStateCopyWithImpl;
+abstract mixin class $MovieInfoLoadedStateCopyWith<$Res> implements $MovieInfoStateCopyWith<$Res> {
+  factory $MovieInfoLoadedStateCopyWith(MovieInfoLoadedState value, $Res Function(MovieInfoLoadedState) _then) = _$MovieInfoLoadedStateCopyWithImpl;
 @useResult
 $Res call({
  List<MovieResults> movie
@@ -574,17 +574,17 @@ $Res call({
 
 }
 /// @nodoc
-class _$MovieLoadedStateCopyWithImpl<$Res>
-    implements $MovieLoadedStateCopyWith<$Res> {
-  _$MovieLoadedStateCopyWithImpl(this._self, this._then);
+class _$MovieInfoLoadedStateCopyWithImpl<$Res>
+    implements $MovieInfoLoadedStateCopyWith<$Res> {
+  _$MovieInfoLoadedStateCopyWithImpl(this._self, this._then);
 
-  final MovieLoadedState _self;
-  final $Res Function(MovieLoadedState) _then;
+  final MovieInfoLoadedState _self;
+  final $Res Function(MovieInfoLoadedState) _then;
 
-/// Create a copy of HomeState
+/// Create a copy of MovieInfoState
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? movie = null,}) {
-  return _then(MovieLoadedState(
+  return _then(MovieInfoLoadedState(
 movie: null == movie ? _self._movie : movie // ignore: cast_nullable_to_non_nullable
 as List<MovieResults>,
   ));
@@ -596,23 +596,23 @@ as List<MovieResults>,
 /// @nodoc
 
 
-class MovieErrorState implements HomeState {
-  const MovieErrorState({required this.massage});
+class MovieInfoErrorState implements MovieInfoState {
+  const MovieInfoErrorState({required this.massage});
   
 
  final  String massage;
 
-/// Create a copy of HomeState
+/// Create a copy of MovieInfoState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$MovieErrorStateCopyWith<MovieErrorState> get copyWith => _$MovieErrorStateCopyWithImpl<MovieErrorState>(this, _$identity);
+$MovieInfoErrorStateCopyWith<MovieInfoErrorState> get copyWith => _$MovieInfoErrorStateCopyWithImpl<MovieInfoErrorState>(this, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is MovieErrorState&&(identical(other.massage, massage) || other.massage == massage));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is MovieInfoErrorState&&(identical(other.massage, massage) || other.massage == massage));
 }
 
 
@@ -621,15 +621,15 @@ int get hashCode => Object.hash(runtimeType,massage);
 
 @override
 String toString() {
-  return 'HomeState.error(massage: $massage)';
+  return 'MovieInfoState.error(massage: $massage)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $MovieErrorStateCopyWith<$Res> implements $HomeStateCopyWith<$Res> {
-  factory $MovieErrorStateCopyWith(MovieErrorState value, $Res Function(MovieErrorState) _then) = _$MovieErrorStateCopyWithImpl;
+abstract mixin class $MovieInfoErrorStateCopyWith<$Res> implements $MovieInfoStateCopyWith<$Res> {
+  factory $MovieInfoErrorStateCopyWith(MovieInfoErrorState value, $Res Function(MovieInfoErrorState) _then) = _$MovieInfoErrorStateCopyWithImpl;
 @useResult
 $Res call({
  String massage
@@ -640,17 +640,17 @@ $Res call({
 
 }
 /// @nodoc
-class _$MovieErrorStateCopyWithImpl<$Res>
-    implements $MovieErrorStateCopyWith<$Res> {
-  _$MovieErrorStateCopyWithImpl(this._self, this._then);
+class _$MovieInfoErrorStateCopyWithImpl<$Res>
+    implements $MovieInfoErrorStateCopyWith<$Res> {
+  _$MovieInfoErrorStateCopyWithImpl(this._self, this._then);
 
-  final MovieErrorState _self;
-  final $Res Function(MovieErrorState) _then;
+  final MovieInfoErrorState _self;
+  final $Res Function(MovieInfoErrorState) _then;
 
-/// Create a copy of HomeState
+/// Create a copy of MovieInfoState
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? massage = null,}) {
-  return _then(MovieErrorState(
+  return _then(MovieInfoErrorState(
 massage: null == massage ? _self.massage : massage // ignore: cast_nullable_to_non_nullable
 as String,
   ));

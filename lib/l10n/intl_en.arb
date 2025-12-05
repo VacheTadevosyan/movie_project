@@ -6,5 +6,8 @@
   "selectLanguage": "Select Language",
   "version": "Version",
   "about": "About",
-  "popularMovies": "Popular Movies"
+  "popularMovies": "Popular Movies",
+  "movieDetails": "Movie Details",
+  "overview": "Overview",
+  "genres": "Genres"
 }

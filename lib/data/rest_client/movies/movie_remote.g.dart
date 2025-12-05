@@ -22,47 +22,7 @@ class _MovieRemote implements MovieRemote {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<List<MovieResultsResponse>> getPopularMovie(
-    String apiKey,
-    int page,
-    String language,
-  ) async {
-    final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{
-      r'api_key': apiKey,
-      r'page': page,
-      r'language': language,
-    };
-    final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<List<MovieResultsResponse>>(
-      Options(method: 'GET', headers: _headers, extra: _extra)
-          .compose(
-            _dio.options,
-            '/movie/popular',
-            queryParameters: queryParameters,
-            data: _data,
-          )
-          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
-    );
-    final _result = await _dio.fetch<List<dynamic>>(_options);
-    late List<MovieResultsResponse> _value;
-    try {
-      _value = _result.data!
-          .map(
-            (dynamic i) =>
-                MovieResultsResponse.fromJson(i as Map<String, dynamic>),
-          )
-          .toList();
-    } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options, _result);
-      rethrow;
-    }
-    return _value;
-  }
-
-  @override
-  Future<MovieResultsResponse> getPopularMovieResults(
+  Future<MovieResultsResponse> getPopularMovie(
     String apiKey,
     int page,
     String language,
@@ -89,6 +49,43 @@ class _MovieRemote implements MovieRemote {
     late MovieResultsResponse _value;
     try {
       _value = MovieResultsResponse.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options, _result);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<List<MovieResults>> getPopularMovieResults(
+    String apiKey,
+    int page,
+    String language,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'api_key': apiKey,
+      r'page': page,
+      r'language': language,
+    };
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<List<MovieResults>>(
+      Options(method: 'GET', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/movie/popular',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<List<dynamic>>(_options);
+    late List<MovieResults> _value;
+    try {
+      _value = _result.data!
+          .map((dynamic i) => MovieResults.fromJson(i as Map<String, dynamic>))
+          .toList();
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options, _result);
       rethrow;

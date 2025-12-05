@@ -6,5 +6,8 @@
   "selectLanguage": "Выбрать язык",
   "version": "Версия",
   "about": "О приложении",
-  "popularMovies": "Популярные фильмы"
+  "popularMovies": "Популярные фильмы",
+  "movieDetails": "О фильме",
+  "overview": "Описание",
+  "genres": "Жанры"
 }

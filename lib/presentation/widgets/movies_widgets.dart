@@ -10,6 +10,7 @@ class MoviesWidget extends StatelessWidget {
     required this.voteAverage,
     required this.voteCount,
     required this.pictureUrl,
+    required this.callback,
   });
 
   final String title;
@@ -17,73 +18,86 @@ class MoviesWidget extends StatelessWidget {
   final String date;
   final String pictureUrl;
   final int voteCount;
+  final VoidCallback callback;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(18.0),
-      child: Container(
-        height: MediaQuery.sizeOf(context).height / 6,
-        width: MediaQuery.sizeOf(context).width,
-        decoration: BoxDecoration(
-          color: MovieColors.darkBlue,
-          borderRadius: BorderRadius.circular(24),
-        ),
-        child: Row(
-          children: [
-            SizedBox(
-              width: MediaQuery.sizeOf(context).width / 4,
-              child: ClipRRect(
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(24),
-                  bottomLeft: Radius.circular(24),
-                ),
-                child: Image.network(
-                  MovieStrings.imageBaseUrl + pictureUrl,
-                  fit: BoxFit.cover,
-                  height: double.infinity,
+      child: GestureDetector(
+        onTap: callback,
+        child: Container(
+          height: MediaQuery.sizeOf(context).height / 6,
+          width: MediaQuery.sizeOf(context).width,
+          decoration: BoxDecoration(
+            color: MovieColors.darkBlue,
+            borderRadius: BorderRadius.circular(24),
+          ),
+          child: Row(
+            children: [
+              SizedBox(
+                width: MediaQuery.sizeOf(context).width / 4,
+                child: ClipRRect(
+                  borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(24),
+                    bottomLeft: Radius.circular(24),
+                  ),
+                  child: Image.network(
+                    MovieStrings.imageBaseUrl + pictureUrl,
+                    fit: BoxFit.cover,
+                    height: double.infinity,
+                  ),
                 ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          title,
-                          style: TextStyle(color: MovieColors.whiteText),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(right: 8.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              title,
+                              maxLines: 2,
+                              softWrap: true,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(color: MovieColors.whiteText),
+                            ),
+                            SizedBox(height: 4),
+                            Text(
+                              date.substring(0, 4),
+                              style: TextStyle(color: MovieColors.greyText),
+                            ),
+                          ],
                         ),
-                        SizedBox(height: 4),
-                        Text(date.substring(0,4), style: TextStyle(color: MovieColors.greyText)),
-                      ],
-                    ),
+                      ),
+                      SizedBox(
+                        child: Row(
+                          children: [
+                            Icon(Icons.star, color: Colors.yellow),
+                            Text(
+                              voteAverage.toString().substring(0, 3),
+                              style: TextStyle(color: MovieColors.whiteText),
+                            ),
+                            SizedBox(width: 6),
+                            Text(
+                              "($voteCount)",
+                              style: TextStyle(color: MovieColors.greyText),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
-                  SizedBox(
-                    child: Row(
-                      children: [
-                        Icon(Icons.star, color: Colors.yellow),
-                        Text(
-                          voteAverage.toString().substring(0,3),
-                          style: TextStyle(color: MovieColors.whiteText),
-                        ),
-                        SizedBox(width: 6),
-                        Text(
-                          "($voteCount)",
-                          style: TextStyle(color: MovieColors.greyText),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
