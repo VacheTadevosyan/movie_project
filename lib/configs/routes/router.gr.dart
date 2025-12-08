@@ -31,11 +31,16 @@ class HomeRoute extends PageRouteInfo<void> {
 class MovieInfoRoute extends PageRouteInfo<MovieInfoRouteArgs> {
   MovieInfoRoute({
     Key? key,
-    required MovieResults movie,
+    required int movieID,
+    required String releaseDate,
     List<PageRouteInfo>? children,
   }) : super(
          MovieInfoRoute.name,
-         args: MovieInfoRouteArgs(key: key, movie: movie),
+         args: MovieInfoRouteArgs(
+           key: key,
+           movieID: movieID,
+           releaseDate: releaseDate,
+         ),
          initialChildren: children,
        );
 
@@ -45,32 +50,44 @@ class MovieInfoRoute extends PageRouteInfo<MovieInfoRouteArgs> {
     name,
     builder: (data) {
       final args = data.argsAs<MovieInfoRouteArgs>();
-      return MovieInfoScreen(key: args.key, movie: args.movie);
+      return MovieInfoScreen(
+        key: args.key,
+        movieID: args.movieID,
+        releaseDate: args.releaseDate,
+      );
     },
   );
 }
 
 class MovieInfoRouteArgs {
-  const MovieInfoRouteArgs({this.key, required this.movie});
+  const MovieInfoRouteArgs({
+    this.key,
+    required this.movieID,
+    required this.releaseDate,
+  });
 
   final Key? key;
 
-  final MovieResults movie;
+  final int movieID;
+
+  final String releaseDate;
 
   @override
   String toString() {
-    return 'MovieInfoRouteArgs{key: $key, movie: $movie}';
+    return 'MovieInfoRouteArgs{key: $key, movieID: $movieID, releaseDate: $releaseDate}';
   }
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
     if (other is! MovieInfoRouteArgs) return false;
-    return key == other.key && movie == other.movie;
+    return key == other.key &&
+        movieID == other.movieID &&
+        releaseDate == other.releaseDate;
   }
 
   @override
-  int get hashCode => key.hashCode ^ movie.hashCode;
+  int get hashCode => key.hashCode ^ movieID.hashCode ^ releaseDate.hashCode;
 }
 
 /// generated route for

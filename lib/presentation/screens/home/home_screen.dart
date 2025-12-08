@@ -37,6 +37,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final currentRoute = context.router.current.name;
     return BlocProvider(
       create: (context) => HomeBloc()..add(const HomeEvent.load()),
       child: Scaffold(
@@ -82,7 +83,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           voteCount: movie.voteCount,
                           pictureUrl: movie.posterPath,
                           callback: () {
-                            context.pushRoute(MovieInfoRoute(movie: movie));
+                            context.pushRoute(MovieInfoRoute(movieID: movie.id,releaseDate: movie.releaseDate));
                           },
                         ),
                       ],
@@ -96,7 +97,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     voteCount: movie.voteCount,
                     pictureUrl: movie.posterPath,
                     callback: () {
-                      context.pushRoute(MovieInfoRoute(movie: movie));
+                      context.pushRoute(MovieInfoRoute(movieID: movie.id,releaseDate: movie.releaseDate));
                     },
                   );
                 },
@@ -116,7 +117,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 onTap: () {},
                 text: MovieStrings.homeBottom(context),
                 textColor: MovieColors.whiteText,
-                iconColor: MovieColors.whiteItem,
+                iconColor: currentRoute == HomeRoute.name
+                    ? Colors.blue
+                    : MovieColors.whiteItem,
               ),
               Bottoms(
                 icon: Icons.search,

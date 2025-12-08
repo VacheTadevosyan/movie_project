@@ -15,6 +15,7 @@ class MoviesRepository {
       page,
       local,
     );
+
     return response;
   }
 

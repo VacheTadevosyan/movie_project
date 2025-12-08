@@ -125,10 +125,10 @@ return error(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  load,TResult Function()?  loaded,TResult Function()?  error,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( int id)?  load,TResult Function()?  loaded,TResult Function()?  error,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case MovieInfoLoad() when load != null:
-return load();case MovieInfoLoaded() when loaded != null:
+return load(_that.id);case MovieInfoLoaded() when loaded != null:
 return loaded();case MovieInfoError() when error != null:
 return error();case _:
   return orElse();
@@ -148,10 +148,10 @@ return error();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  load,required TResult Function()  loaded,required TResult Function()  error,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( int id)  load,required TResult Function()  loaded,required TResult Function()  error,}) {final _that = this;
 switch (_that) {
 case MovieInfoLoad():
-return load();case MovieInfoLoaded():
+return load(_that.id);case MovieInfoLoaded():
 return loaded();case MovieInfoError():
 return error();case _:
   throw StateError('Unexpected subclass');
@@ -170,10 +170,10 @@ return error();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  load,TResult? Function()?  loaded,TResult? Function()?  error,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( int id)?  load,TResult? Function()?  loaded,TResult? Function()?  error,}) {final _that = this;
 switch (_that) {
 case MovieInfoLoad() when load != null:
-return load();case MovieInfoLoaded() when loaded != null:
+return load(_that.id);case MovieInfoLoaded() when loaded != null:
 return loaded();case MovieInfoError() when error != null:
 return error();case _:
   return null;
@@ -187,33 +187,67 @@ return error();case _:
 
 
 class MovieInfoLoad implements MovieInfoEvent {
-  const MovieInfoLoad();
+  const MovieInfoLoad({required this.id});
   
 
+ final  int id;
 
-
+/// Create a copy of MovieInfoEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$MovieInfoLoadCopyWith<MovieInfoLoad> get copyWith => _$MovieInfoLoadCopyWithImpl<MovieInfoLoad>(this, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is MovieInfoLoad);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is MovieInfoLoad&&(identical(other.id, id) || other.id == id));
 }
 
 
 @override
-int get hashCode => runtimeType.hashCode;
+int get hashCode => Object.hash(runtimeType,id);
 
 @override
 String toString() {
-  return 'MovieInfoEvent.load()';
+  return 'MovieInfoEvent.load(id: $id)';
 }
 
 
 }
 
+/// @nodoc
+abstract mixin class $MovieInfoLoadCopyWith<$Res> implements $MovieInfoEventCopyWith<$Res> {
+  factory $MovieInfoLoadCopyWith(MovieInfoLoad value, $Res Function(MovieInfoLoad) _then) = _$MovieInfoLoadCopyWithImpl;
+@useResult
+$Res call({
+ int id
+});
 
 
+
+
+}
+/// @nodoc
+class _$MovieInfoLoadCopyWithImpl<$Res>
+    implements $MovieInfoLoadCopyWith<$Res> {
+  _$MovieInfoLoadCopyWithImpl(this._self, this._then);
+
+  final MovieInfoLoad _self;
+  final $Res Function(MovieInfoLoad) _then;
+
+/// Create a copy of MovieInfoEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? id = null,}) {
+  return _then(MovieInfoLoad(
+id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as int,
+  ));
+}
+
+
+}
 
 /// @nodoc
 
@@ -396,7 +430,7 @@ return error(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  load,TResult Function( List<MovieResults> movie)?  loaded,TResult Function( String massage)?  error,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  load,TResult Function( MovieDetailModel movie)?  loaded,TResult Function( String massage)?  error,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case MovieInfoInitialState() when initial != null:
 return initial();case MovieInfoloadState() when load != null:
@@ -420,7 +454,7 @@ return error(_that.massage);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  load,required TResult Function( List<MovieResults> movie)  loaded,required TResult Function( String massage)  error,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  load,required TResult Function( MovieDetailModel movie)  loaded,required TResult Function( String massage)  error,}) {final _that = this;
 switch (_that) {
 case MovieInfoInitialState():
 return initial();case MovieInfoloadState():
@@ -443,7 +477,7 @@ return error(_that.massage);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  load,TResult? Function( List<MovieResults> movie)?  loaded,TResult? Function( String massage)?  error,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  load,TResult? Function( MovieDetailModel movie)?  loaded,TResult? Function( String massage)?  error,}) {final _that = this;
 switch (_that) {
 case MovieInfoInitialState() when initial != null:
 return initial();case MovieInfoloadState() when load != null:
@@ -525,16 +559,10 @@ String toString() {
 
 
 class MovieInfoLoadedState implements MovieInfoState {
-  const MovieInfoLoadedState({required final  List<MovieResults> movie}): _movie = movie;
+  const MovieInfoLoadedState({required this.movie});
   
 
- final  List<MovieResults> _movie;
- List<MovieResults> get movie {
-  if (_movie is EqualUnmodifiableListView) return _movie;
-  // ignore: implicit_dynamic_type
-  return EqualUnmodifiableListView(_movie);
-}
-
+ final  MovieDetailModel movie;
 
 /// Create a copy of MovieInfoState
 /// with the given fields replaced by the non-null parameter values.
@@ -546,12 +574,12 @@ $MovieInfoLoadedStateCopyWith<MovieInfoLoadedState> get copyWith => _$MovieInfoL
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is MovieInfoLoadedState&&const DeepCollectionEquality().equals(other._movie, _movie));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is MovieInfoLoadedState&&(identical(other.movie, movie) || other.movie == movie));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_movie));
+int get hashCode => Object.hash(runtimeType,movie);
 
 @override
 String toString() {
@@ -566,11 +594,11 @@ abstract mixin class $MovieInfoLoadedStateCopyWith<$Res> implements $MovieInfoSt
   factory $MovieInfoLoadedStateCopyWith(MovieInfoLoadedState value, $Res Function(MovieInfoLoadedState) _then) = _$MovieInfoLoadedStateCopyWithImpl;
 @useResult
 $Res call({
- List<MovieResults> movie
+ MovieDetailModel movie
 });
 
 
-
+$MovieDetailModelCopyWith<$Res> get movie;
 
 }
 /// @nodoc
@@ -585,12 +613,21 @@ class _$MovieInfoLoadedStateCopyWithImpl<$Res>
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? movie = null,}) {
   return _then(MovieInfoLoadedState(
-movie: null == movie ? _self._movie : movie // ignore: cast_nullable_to_non_nullable
-as List<MovieResults>,
+movie: null == movie ? _self.movie : movie // ignore: cast_nullable_to_non_nullable
+as MovieDetailModel,
   ));
 }
 
-
+/// Create a copy of MovieInfoState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$MovieDetailModelCopyWith<$Res> get movie {
+  
+  return $MovieDetailModelCopyWith<$Res>(_self.movie, (value) {
+    return _then(_self.copyWith(movie: value));
+  });
+}
 }
 
 /// @nodoc

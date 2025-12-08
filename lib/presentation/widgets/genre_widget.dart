@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
+import 'package:movie_project/domain/model/movie_model/genre_model/genre_model.dart';
 
 class GenreWidget extends StatelessWidget {
   const GenreWidget({super.key, required this.genre});
 
-  final List<String> genre;
+  final List<GenreModel> genre;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +24,7 @@ class GenreWidget extends StatelessWidget {
                 borderRadius: BorderRadius.all(Radius.circular(60)),
                 color: Color(0xFF0A183F),
               ),
-              child: Text(genre[index],style: TextStyle(
+              child: Text(genre[index].name,style: TextStyle(
                 color: Color(0xFF58A0FD)
               ),),
             ),

@@ -29,4 +29,5 @@ abstract class MovieStrings {
   static const String apiKey = '983f06a48e7c71d8550f97ea1e6b30d3';
   static const String imageBaseUrl = 'https://image.tmdb.org/t/p/w500';
   static const String popularMovie = '/movie/popular';
+  static const String movie = '/movie/{id}';
 }
