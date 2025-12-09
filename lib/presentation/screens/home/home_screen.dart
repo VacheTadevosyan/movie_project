@@ -13,27 +13,16 @@ import 'package:movie_project/presentation/widgets/movies_widgets.dart';
 import 'bloc/home_bloc.dart';
 
 @RoutePage()
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class HomeScreen extends StatelessWidget {
+  HomeScreen({super.key});
 
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
-  final PagingController<int, MovieResults> _pagingController =
+  final PagingController<int, MovieResults> pagingController =
       PagingController<int, MovieResults>(
         getNextPageKey: (state) =>
             state.lastPageIsEmpty ? null : state.nextIntPageKey,
         fetchPage: (pageKey) =>
             MoviesRepository().getMovieResults(page: pageKey),
       );
-
-  @override
-  void dispose() {
-    _pagingController.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,60 +39,73 @@ class _HomeScreenState extends State<HomeScreen> {
           backgroundColor: MovieColors.darkBlue,
         ),
 
-        body: PagingListener<int, MovieResults>(
-          controller: _pagingController,
-          builder: (context, state, fetchNextPage) {
-            return PagedListView<int, MovieResults>(
-              state: state,
-              fetchNextPage: fetchNextPage,
-              builderDelegate: PagedChildBuilderDelegate<MovieResults>(
-                firstPageProgressIndicatorBuilder: (context) =>
-                    Center(child: CircularProgressIndicator()),
-                newPageProgressIndicatorBuilder: (context) => const Padding(
-                  padding: EdgeInsets.all(16),
-                  child: Center(child: CircularProgressIndicator()),
-                ),
-                itemBuilder: (context, movie, index) {
-                  if (index == 0) {
-                    return Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const SizedBox(height: 16),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 16),
-                          child: Text(
-                            MovieStrings.popularMovies(context),
-                            style: const TextStyle(fontSize: 16),
+        body: BlocProvider(
+          create: (context) => HomeBloc()..add(const HomeEvent.load()),
+          child: PagingListener<int, MovieResults>(
+            controller: pagingController,
+            builder: (context, state, fetchNextPage) {
+              return PagedListView<int, MovieResults>(
+                state: state,
+                fetchNextPage: fetchNextPage,
+                builderDelegate: PagedChildBuilderDelegate<MovieResults>(
+                  firstPageProgressIndicatorBuilder: (context) =>
+                      Center(child: CircularProgressIndicator()),
+                  newPageProgressIndicatorBuilder: (context) => const Padding(
+                    padding: EdgeInsets.all(16),
+                    child: Center(child: CircularProgressIndicator()),
+                  ),
+                  itemBuilder: (context, movie, index) {
+                    if (index == 0) {
+                      return Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const SizedBox(height: 16),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 16),
+                            child: Text(
+                              MovieStrings.popularMovies(context),
+                              style: const TextStyle(fontSize: 16),
+                            ),
                           ),
-                        ),
-                        MoviesWidget(
-                          title: movie.title,
-                          date: movie.releaseDate,
-                          voteAverage: movie.voteAverage,
-                          voteCount: movie.voteCount,
-                          pictureUrl: movie.posterPath,
-                          callback: () {
-                            context.pushRoute(MovieInfoRoute(movieID: movie.id,releaseDate: movie.releaseDate));
-                          },
-                        ),
-                      ],
-                    );
-                  }
+                          MoviesWidget(
+                            title: movie.title,
+                            date: movie.releaseDate ?? "",
+                            voteAverage: movie.voteAverage,
+                            voteCount: movie.voteCount,
+                            pictureUrl: movie.posterPath ?? "",
+                            callback: () {
+                              context.pushRoute(
+                                MovieInfoRoute(
+                                  movieID: movie.id,
+                                  releaseDate: movie.releaseDate ?? "",
+                                ),
+                              );
+                            },
+                          ),
+                        ],
+                      );
+                    }
 
-                  return MoviesWidget(
-                    title: movie.title,
-                    date: movie.releaseDate,
-                    voteAverage: movie.voteAverage,
-                    voteCount: movie.voteCount,
-                    pictureUrl: movie.posterPath,
-                    callback: () {
-                      context.pushRoute(MovieInfoRoute(movieID: movie.id,releaseDate: movie.releaseDate));
-                    },
-                  );
-                },
-              ),
-            );
-          },
+                    return MoviesWidget(
+                      title: movie.title,
+                      date: movie.releaseDate ?? '',
+                      voteAverage: movie.voteAverage,
+                      voteCount: movie.voteCount,
+                      pictureUrl: movie.posterPath ?? '',
+                      callback: () {
+                        context.pushRoute(
+                          MovieInfoRoute(
+                            movieID: movie.id,
+                            releaseDate: movie.releaseDate ?? '',
+                          ),
+                        );
+                      },
+                    );
+                  },
+                ),
+              );
+            },
+          ),
         ),
 
         bottomNavigationBar: BottomAppBar(
@@ -116,7 +118,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 icon: Icons.home,
                 onTap: () {},
                 text: MovieStrings.homeBottom(context),
-                textColor: MovieColors.whiteText,
+                textColor: currentRoute == HomeRoute.name
+                    ? Colors.blue
+                    : MovieColors.whiteText,
                 iconColor: currentRoute == HomeRoute.name
                     ? Colors.blue
                     : MovieColors.whiteItem,
@@ -124,7 +128,7 @@ class _HomeScreenState extends State<HomeScreen> {
               Bottoms(
                 icon: Icons.search,
                 onTap: () {
-                  context.pushRoute(const SearchRoute());
+                  context.pushRoute(SearchRoute());
                 },
                 text: MovieStrings.searchBottom(context),
                 textColor: MovieColors.whiteText,

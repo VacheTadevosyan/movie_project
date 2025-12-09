@@ -15,7 +15,7 @@ class MoviesWidget extends StatelessWidget {
 
   final String title;
   final double voteAverage;
-  final String date;
+  final String? date;
   final String pictureUrl;
   final int voteCount;
   final VoidCallback callback;
@@ -70,7 +70,7 @@ class MoviesWidget extends StatelessWidget {
                             ),
                             SizedBox(height: 4),
                             Text(
-                              date.substring(0, 4),
+                              date ?? '',
                               style: TextStyle(color: MovieColors.greyText),
                             ),
                           ],

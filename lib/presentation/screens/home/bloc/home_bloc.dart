@@ -17,10 +17,10 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     on<MovieLoadEvent>((event, emit) async {
 
       final repository = MoviesRepository();
-      final movies = await repository.getMovieResults(page: _page);
+      final movies = await repository.getMovieModel(page: _page);
 
       try{
-        emit(HomeState.loaded(movie: movies));
+        emit(HomeState.loaded(movie: movies.results));
       }catch(e){
         emit(HomeState.error(massage:e.toString() ));
       }

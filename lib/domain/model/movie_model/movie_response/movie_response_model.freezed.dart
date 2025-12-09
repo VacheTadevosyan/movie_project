@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$MovieResultsResponse {
 
- int get page; List<MovieResults> get results; int get total_pages; int get total_results;
+ int get page; List<MovieResults> get results;@JsonKey(name: 'total_pages') int get totalPages;@JsonKey(name: 'total_results') int get totalResults;
 /// Create a copy of MovieResultsResponse
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $MovieResultsResponseCopyWith<MovieResultsResponse> get copyWith => _$MovieResul
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is MovieResultsResponse&&(identical(other.page, page) || other.page == page)&&const DeepCollectionEquality().equals(other.results, results)&&(identical(other.total_pages, total_pages) || other.total_pages == total_pages)&&(identical(other.total_results, total_results) || other.total_results == total_results));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is MovieResultsResponse&&(identical(other.page, page) || other.page == page)&&const DeepCollectionEquality().equals(other.results, results)&&(identical(other.totalPages, totalPages) || other.totalPages == totalPages)&&(identical(other.totalResults, totalResults) || other.totalResults == totalResults));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,page,const DeepCollectionEquality().hash(results),total_pages,total_results);
+int get hashCode => Object.hash(runtimeType,page,const DeepCollectionEquality().hash(results),totalPages,totalResults);
 
 @override
 String toString() {
-  return 'MovieResultsResponse(page: $page, results: $results, total_pages: $total_pages, total_results: $total_results)';
+  return 'MovieResultsResponse(page: $page, results: $results, totalPages: $totalPages, totalResults: $totalResults)';
 }
 
 
@@ -48,7 +48,7 @@ abstract mixin class $MovieResultsResponseCopyWith<$Res>  {
   factory $MovieResultsResponseCopyWith(MovieResultsResponse value, $Res Function(MovieResultsResponse) _then) = _$MovieResultsResponseCopyWithImpl;
 @useResult
 $Res call({
- int page, List<MovieResults> results, int total_pages, int total_results
+ int page, List<MovieResults> results,@JsonKey(name: 'total_pages') int totalPages,@JsonKey(name: 'total_results') int totalResults
 });
 
 
@@ -65,12 +65,12 @@ class _$MovieResultsResponseCopyWithImpl<$Res>
 
 /// Create a copy of MovieResultsResponse
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? page = null,Object? results = null,Object? total_pages = null,Object? total_results = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? page = null,Object? results = null,Object? totalPages = null,Object? totalResults = null,}) {
   return _then(_self.copyWith(
 page: null == page ? _self.page : page // ignore: cast_nullable_to_non_nullable
 as int,results: null == results ? _self.results : results // ignore: cast_nullable_to_non_nullable
-as List<MovieResults>,total_pages: null == total_pages ? _self.total_pages : total_pages // ignore: cast_nullable_to_non_nullable
-as int,total_results: null == total_results ? _self.total_results : total_results // ignore: cast_nullable_to_non_nullable
+as List<MovieResults>,totalPages: null == totalPages ? _self.totalPages : totalPages // ignore: cast_nullable_to_non_nullable
+as int,totalResults: null == totalResults ? _self.totalResults : totalResults // ignore: cast_nullable_to_non_nullable
 as int,
   ));
 }
@@ -156,10 +156,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int page,  List<MovieResults> results,  int total_pages,  int total_results)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int page,  List<MovieResults> results, @JsonKey(name: 'total_pages')  int totalPages, @JsonKey(name: 'total_results')  int totalResults)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _MovieResultsResponse() when $default != null:
-return $default(_that.page,_that.results,_that.total_pages,_that.total_results);case _:
+return $default(_that.page,_that.results,_that.totalPages,_that.totalResults);case _:
   return orElse();
 
 }
@@ -177,10 +177,10 @@ return $default(_that.page,_that.results,_that.total_pages,_that.total_results);
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int page,  List<MovieResults> results,  int total_pages,  int total_results)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int page,  List<MovieResults> results, @JsonKey(name: 'total_pages')  int totalPages, @JsonKey(name: 'total_results')  int totalResults)  $default,) {final _that = this;
 switch (_that) {
 case _MovieResultsResponse():
-return $default(_that.page,_that.results,_that.total_pages,_that.total_results);case _:
+return $default(_that.page,_that.results,_that.totalPages,_that.totalResults);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -197,10 +197,10 @@ return $default(_that.page,_that.results,_that.total_pages,_that.total_results);
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int page,  List<MovieResults> results,  int total_pages,  int total_results)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int page,  List<MovieResults> results, @JsonKey(name: 'total_pages')  int totalPages, @JsonKey(name: 'total_results')  int totalResults)?  $default,) {final _that = this;
 switch (_that) {
 case _MovieResultsResponse() when $default != null:
-return $default(_that.page,_that.results,_that.total_pages,_that.total_results);case _:
+return $default(_that.page,_that.results,_that.totalPages,_that.totalResults);case _:
   return null;
 
 }
@@ -212,7 +212,7 @@ return $default(_that.page,_that.results,_that.total_pages,_that.total_results);
 @JsonSerializable()
 
 class _MovieResultsResponse implements MovieResultsResponse {
-  const _MovieResultsResponse({required this.page, required final  List<MovieResults> results, required this.total_pages, required this.total_results}): _results = results;
+  const _MovieResultsResponse({required this.page, required final  List<MovieResults> results, @JsonKey(name: 'total_pages') required this.totalPages, @JsonKey(name: 'total_results') required this.totalResults}): _results = results;
   factory _MovieResultsResponse.fromJson(Map<String, dynamic> json) => _$MovieResultsResponseFromJson(json);
 
 @override final  int page;
@@ -223,8 +223,8 @@ class _MovieResultsResponse implements MovieResultsResponse {
   return EqualUnmodifiableListView(_results);
 }
 
-@override final  int total_pages;
-@override final  int total_results;
+@override@JsonKey(name: 'total_pages') final  int totalPages;
+@override@JsonKey(name: 'total_results') final  int totalResults;
 
 /// Create a copy of MovieResultsResponse
 /// with the given fields replaced by the non-null parameter values.
@@ -239,16 +239,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _MovieResultsResponse&&(identical(other.page, page) || other.page == page)&&const DeepCollectionEquality().equals(other._results, _results)&&(identical(other.total_pages, total_pages) || other.total_pages == total_pages)&&(identical(other.total_results, total_results) || other.total_results == total_results));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _MovieResultsResponse&&(identical(other.page, page) || other.page == page)&&const DeepCollectionEquality().equals(other._results, _results)&&(identical(other.totalPages, totalPages) || other.totalPages == totalPages)&&(identical(other.totalResults, totalResults) || other.totalResults == totalResults));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,page,const DeepCollectionEquality().hash(_results),total_pages,total_results);
+int get hashCode => Object.hash(runtimeType,page,const DeepCollectionEquality().hash(_results),totalPages,totalResults);
 
 @override
 String toString() {
-  return 'MovieResultsResponse(page: $page, results: $results, total_pages: $total_pages, total_results: $total_results)';
+  return 'MovieResultsResponse(page: $page, results: $results, totalPages: $totalPages, totalResults: $totalResults)';
 }
 
 
@@ -259,7 +259,7 @@ abstract mixin class _$MovieResultsResponseCopyWith<$Res> implements $MovieResul
   factory _$MovieResultsResponseCopyWith(_MovieResultsResponse value, $Res Function(_MovieResultsResponse) _then) = __$MovieResultsResponseCopyWithImpl;
 @override @useResult
 $Res call({
- int page, List<MovieResults> results, int total_pages, int total_results
+ int page, List<MovieResults> results,@JsonKey(name: 'total_pages') int totalPages,@JsonKey(name: 'total_results') int totalResults
 });
 
 
@@ -276,12 +276,12 @@ class __$MovieResultsResponseCopyWithImpl<$Res>
 
 /// Create a copy of MovieResultsResponse
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? page = null,Object? results = null,Object? total_pages = null,Object? total_results = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? page = null,Object? results = null,Object? totalPages = null,Object? totalResults = null,}) {
   return _then(_MovieResultsResponse(
 page: null == page ? _self.page : page // ignore: cast_nullable_to_non_nullable
 as int,results: null == results ? _self._results : results // ignore: cast_nullable_to_non_nullable
-as List<MovieResults>,total_pages: null == total_pages ? _self.total_pages : total_pages // ignore: cast_nullable_to_non_nullable
-as int,total_results: null == total_results ? _self.total_results : total_results // ignore: cast_nullable_to_non_nullable
+as List<MovieResults>,totalPages: null == totalPages ? _self.totalPages : totalPages // ignore: cast_nullable_to_non_nullable
+as int,totalResults: null == totalResults ? _self.totalResults : totalResults // ignore: cast_nullable_to_non_nullable
 as int,
   ));
 }

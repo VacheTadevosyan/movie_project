@@ -9,8 +9,8 @@ abstract class MovieResultsResponse with _$MovieResultsResponse {
   const factory MovieResultsResponse({
     required int page,
     required List<MovieResults> results,
-    required int total_pages,
-    required int total_results,
+    @JsonKey(name: 'total_pages') required int totalPages,
+    @JsonKey(name: 'total_results') required int totalResults,
   }) = _MovieResultsResponse;
 
   factory MovieResultsResponse.fromJson(Map<String, dynamic> json) =>

@@ -4,7 +4,6 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:movie_project/configs/constants/colors/colors.dart';
 import 'package:movie_project/configs/routes/router.dart';
 import 'package:movie_project/presentation/screens/settings/bloc/settings_bloc.dart';
-
 import 'generated/l10n.dart';
 
 class MyApp extends StatelessWidget {

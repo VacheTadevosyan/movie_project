@@ -13,6 +13,7 @@ class SettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final currentRoute = context.router.current.name;
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -140,8 +141,12 @@ class SettingsScreen extends StatelessWidget {
               icon: Icons.settings,
               onTap: () {},
               text: MovieStrings.settingsBottom(context),
-              textColor: Colors.white,
-              iconColor: Colors.white,
+              textColor: currentRoute == SettingsRoute.name
+                  ? Colors.blue
+                  : MovieColors.whiteText,
+              iconColor: currentRoute == SettingsRoute.name
+                  ? Colors.blue
+                  : MovieColors.whiteItem,
             ),
           ],
         ),
