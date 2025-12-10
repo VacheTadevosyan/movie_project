@@ -30,6 +30,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "overview": MessageLookupByLibrary.simpleMessage("Overview"),
     "popularMovies": MessageLookupByLibrary.simpleMessage("Popular Movies"),
     "search": MessageLookupByLibrary.simpleMessage("Search"),
+    "searchResults": MessageLookupByLibrary.simpleMessage("Search Results"),
     "selectLanguage": MessageLookupByLibrary.simpleMessage("Select Language"),
     "settings": MessageLookupByLibrary.simpleMessage("Settings"),
     "version": MessageLookupByLibrary.simpleMessage("Version"),

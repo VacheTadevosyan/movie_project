@@ -9,5 +9,6 @@
   "popularMovies": "Popular Movies",
   "movieDetails": "Movie Details",
   "overview": "Overview",
-  "genres": "Genres"
+  "genres": "Genres",
+  "searchResults": "Search Results"
 }

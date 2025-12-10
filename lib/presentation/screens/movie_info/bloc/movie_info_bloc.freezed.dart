@@ -430,7 +430,7 @@ return error(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  load,TResult Function( MovieDetailModel movie)?  loaded,TResult Function( String massage)?  error,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  load,TResult Function( MovieDetailModel? movie)?  loaded,TResult Function( String massage)?  error,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case MovieInfoInitialState() when initial != null:
 return initial();case MovieInfoloadState() when load != null:
@@ -454,7 +454,7 @@ return error(_that.massage);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  load,required TResult Function( MovieDetailModel movie)  loaded,required TResult Function( String massage)  error,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  load,required TResult Function( MovieDetailModel? movie)  loaded,required TResult Function( String massage)  error,}) {final _that = this;
 switch (_that) {
 case MovieInfoInitialState():
 return initial();case MovieInfoloadState():
@@ -477,7 +477,7 @@ return error(_that.massage);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  load,TResult? Function( MovieDetailModel movie)?  loaded,TResult? Function( String massage)?  error,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  load,TResult? Function( MovieDetailModel? movie)?  loaded,TResult? Function( String massage)?  error,}) {final _that = this;
 switch (_that) {
 case MovieInfoInitialState() when initial != null:
 return initial();case MovieInfoloadState() when load != null:
@@ -562,7 +562,7 @@ class MovieInfoLoadedState implements MovieInfoState {
   const MovieInfoLoadedState({required this.movie});
   
 
- final  MovieDetailModel movie;
+ final  MovieDetailModel? movie;
 
 /// Create a copy of MovieInfoState
 /// with the given fields replaced by the non-null parameter values.
@@ -594,11 +594,11 @@ abstract mixin class $MovieInfoLoadedStateCopyWith<$Res> implements $MovieInfoSt
   factory $MovieInfoLoadedStateCopyWith(MovieInfoLoadedState value, $Res Function(MovieInfoLoadedState) _then) = _$MovieInfoLoadedStateCopyWithImpl;
 @useResult
 $Res call({
- MovieDetailModel movie
+ MovieDetailModel? movie
 });
 
 
-$MovieDetailModelCopyWith<$Res> get movie;
+$MovieDetailModelCopyWith<$Res>? get movie;
 
 }
 /// @nodoc
@@ -611,10 +611,10 @@ class _$MovieInfoLoadedStateCopyWithImpl<$Res>
 
 /// Create a copy of MovieInfoState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? movie = null,}) {
+@pragma('vm:prefer-inline') $Res call({Object? movie = freezed,}) {
   return _then(MovieInfoLoadedState(
-movie: null == movie ? _self.movie : movie // ignore: cast_nullable_to_non_nullable
-as MovieDetailModel,
+movie: freezed == movie ? _self.movie : movie // ignore: cast_nullable_to_non_nullable
+as MovieDetailModel?,
   ));
 }
 
@@ -622,9 +622,12 @@ as MovieDetailModel,
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
-$MovieDetailModelCopyWith<$Res> get movie {
-  
-  return $MovieDetailModelCopyWith<$Res>(_self.movie, (value) {
+$MovieDetailModelCopyWith<$Res>? get movie {
+    if (_self.movie == null) {
+    return null;
+  }
+
+  return $MovieDetailModelCopyWith<$Res>(_self.movie!, (value) {
     return _then(_self.copyWith(movie: value));
   });
 }

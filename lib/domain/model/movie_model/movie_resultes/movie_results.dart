@@ -15,7 +15,7 @@ abstract class MovieResults with _$MovieResults {
     @JsonKey(name: 'backdrop_path') String? backdropPath,
     String? overview,
 
-    @JsonKey(name: 'release_date') String? releaseDate,
+    @JsonKey(name: 'release_date') required String releaseDate,
     @JsonKey(name: 'vote_average') required double voteAverage,
     @JsonKey(name: 'vote_count') required int voteCount,
 

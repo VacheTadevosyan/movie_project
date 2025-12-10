@@ -15,7 +15,7 @@ class MovieInfoBloc extends Bloc<MovieInfoEvent, MovieInfoState> {
       try {
         emit(
           MovieInfoState.loaded(
-            movie: await response.getMovieDetailModel( id: event.id),
+            movie: await response.getMovieDetailModel( id: event.id) ,
           ),
         );
       } catch (e) {

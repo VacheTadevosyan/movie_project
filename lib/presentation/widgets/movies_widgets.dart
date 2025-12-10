@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movie_project/configs/constants/Strings/strings.dart';
 import 'package:movie_project/configs/constants/colors/colors.dart';
+import 'package:flutter_svg/svg.dart';
 
 class MoviesWidget extends StatelessWidget {
   const MoviesWidget({
@@ -15,8 +16,8 @@ class MoviesWidget extends StatelessWidget {
 
   final String title;
   final double voteAverage;
-  final String? date;
-  final String pictureUrl;
+  final String date;
+  final String? pictureUrl;
   final int voteCount;
   final VoidCallback callback;
 
@@ -42,10 +43,19 @@ class MoviesWidget extends StatelessWidget {
                     topLeft: Radius.circular(24),
                     bottomLeft: Radius.circular(24),
                   ),
-                  child: Image.network(
-                    MovieStrings.imageBaseUrl + pictureUrl,
-                    fit: BoxFit.cover,
-                    height: double.infinity,
+
+                  child: pictureUrl != null ?Image.network(
+                      MovieStrings.imageBaseUrl + pictureUrl!,
+                      fit: BoxFit.cover,
+                      height: double.infinity,
+                    ) : Container(
+                    color: Colors.white,
+                    alignment: Alignment.center,
+                    child: SvgPicture.asset(
+                      'assets/images/image_not_founded.svg',
+                      width: 60,
+                      height: 60,
+                    ),
                   ),
                 ),
               ),
@@ -70,7 +80,7 @@ class MoviesWidget extends StatelessWidget {
                             ),
                             SizedBox(height: 4),
                             Text(
-                              date ?? '',
+                              date.length > 4 ? date.substring(0,4) : date,
                               style: TextStyle(color: MovieColors.greyText),
                             ),
                           ],

@@ -9,5 +9,6 @@
   "popularMovies": "Популярные фильмы",
   "movieDetails": "О фильме",
   "overview": "Описание",
-  "genres": "Жанры"
+  "genres": "Жанры",
+  "searchResults": "Результаты поиска"
 }

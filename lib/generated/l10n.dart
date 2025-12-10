@@ -128,6 +128,16 @@ class S {
   String get genres {
     return Intl.message('Genres', name: 'genres', desc: '', args: []);
   }
+
+  /// `Search Results`
+  String get searchResults {
+    return Intl.message(
+      'Search Results',
+      name: 'searchResults',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

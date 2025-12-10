@@ -8,10 +8,10 @@ import 'information_widget.dart';
 
 Widget movieDetailsUI({
   required BuildContext context,
-  required MovieDetailModel movie,
+  required MovieDetailModel? movie,
   required String releaseDate,
 }) {
-  return Center(
+  return movie != null ? Center(
     child: Column(
       children: [
         Stack(
@@ -19,7 +19,9 @@ Widget movieDetailsUI({
             ClipRRect(
               child: Image.network(
                 MovieStrings.imageBaseUrl + movie.backdropPath,
-                height: MediaQuery.sizeOf(context).height / 3.5,
+                height: MediaQuery
+                    .sizeOf(context)
+                    .height / 3.5,
                 fit: BoxFit.cover,
               ),
             ),
@@ -28,7 +30,9 @@ Widget movieDetailsUI({
               left: 0,
               right: 0,
               child: Container(
-                height: MediaQuery.sizeOf(context).height / 3.5,
+                height: MediaQuery
+                    .sizeOf(context)
+                    .height / 3.5,
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                     begin: AlignmentGeometry.topCenter,
@@ -48,7 +52,9 @@ Widget movieDetailsUI({
                     borderRadius: BorderRadius.all(Radius.circular(24)),
                     child: Image.network(
                       MovieStrings.imageBaseUrl + movie.posterPath,
-                      width: MediaQuery.sizeOf(context).width / 3.5,
+                      width: MediaQuery
+                          .sizeOf(context)
+                          .width / 3.5,
                     ),
                   ),
                   SizedBox(width: 28,),
@@ -57,7 +63,10 @@ Widget movieDetailsUI({
                     children: [
                       ConstrainedBox(
                         constraints: BoxConstraints(
-                          maxWidth: MediaQuery.of(context).size.width / 2,
+                          maxWidth: MediaQuery
+                              .of(context)
+                              .size
+                              .width / 2,
                         ),
                         child: Text(
                           movie.title,
@@ -69,7 +78,10 @@ Widget movieDetailsUI({
                       ),
                       ConstrainedBox(
                         constraints: BoxConstraints(
-                          maxWidth: MediaQuery.of(context).size.width / 2,
+                          maxWidth: MediaQuery
+                              .of(context)
+                              .size
+                              .width / 2,
                         ),
                         child: Text(
                           movie.tagline,
@@ -130,6 +142,21 @@ Widget movieDetailsUI({
             ],
           ),
         ),
+      ],
+    ),
+  )
+      : SizedBox(
+    height: MediaQuery.sizeOf(context).height,
+    width: MediaQuery.sizeOf(context).width ,
+    child: Column(
+      mainAxisAlignment: .center,
+      crossAxisAlignment: .center,
+      children: [
+        Icon(Icons.mood_bad_rounded,size: 100,),
+          Text("Movie not founded", style: TextStyle(
+              fontSize: 24
+          ),
+          ),
       ],
     ),
   );

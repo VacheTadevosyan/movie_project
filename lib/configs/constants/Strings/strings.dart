@@ -13,6 +13,7 @@ abstract class MovieStrings {
   static String popularMovies(BuildContext context) => S.of(context).popularMovies;
   static String overview(BuildContext context) => S.of(context).overview;
   static String genres(BuildContext context) => S.of(context).genres;
+  static String searchResults(BuildContext context) => S.of(context).searchResults;
 
   ///BOTTOMS
   static String homeBottom(BuildContext context) => S.of(context).home;

@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$MovieResults {
 
- int get id; String get title;@JsonKey(name: 'poster_path') String? get posterPath;@JsonKey(name: 'backdrop_path') String? get backdropPath; String? get overview;@JsonKey(name: 'release_date') String? get releaseDate;@JsonKey(name: 'vote_average') double get voteAverage;@JsonKey(name: 'vote_count') int get voteCount;@JsonKey(name: 'genre_ids') List<int> get genreIds;
+ int get id; String get title;@JsonKey(name: 'poster_path') String? get posterPath;@JsonKey(name: 'backdrop_path') String? get backdropPath; String? get overview;@JsonKey(name: 'release_date') String get releaseDate;@JsonKey(name: 'vote_average') double get voteAverage;@JsonKey(name: 'vote_count') int get voteCount;@JsonKey(name: 'genre_ids') List<int> get genreIds;
 /// Create a copy of MovieResults
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -48,7 +48,7 @@ abstract mixin class $MovieResultsCopyWith<$Res>  {
   factory $MovieResultsCopyWith(MovieResults value, $Res Function(MovieResults) _then) = _$MovieResultsCopyWithImpl;
 @useResult
 $Res call({
- int id, String title,@JsonKey(name: 'poster_path') String? posterPath,@JsonKey(name: 'backdrop_path') String? backdropPath, String? overview,@JsonKey(name: 'release_date') String? releaseDate,@JsonKey(name: 'vote_average') double voteAverage,@JsonKey(name: 'vote_count') int voteCount,@JsonKey(name: 'genre_ids') List<int> genreIds
+ int id, String title,@JsonKey(name: 'poster_path') String? posterPath,@JsonKey(name: 'backdrop_path') String? backdropPath, String? overview,@JsonKey(name: 'release_date') String releaseDate,@JsonKey(name: 'vote_average') double voteAverage,@JsonKey(name: 'vote_count') int voteCount,@JsonKey(name: 'genre_ids') List<int> genreIds
 });
 
 
@@ -65,15 +65,15 @@ class _$MovieResultsCopyWithImpl<$Res>
 
 /// Create a copy of MovieResults
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? title = null,Object? posterPath = freezed,Object? backdropPath = freezed,Object? overview = freezed,Object? releaseDate = freezed,Object? voteAverage = null,Object? voteCount = null,Object? genreIds = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? title = null,Object? posterPath = freezed,Object? backdropPath = freezed,Object? overview = freezed,Object? releaseDate = null,Object? voteAverage = null,Object? voteCount = null,Object? genreIds = null,}) {
   return _then(_self.copyWith(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int,title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
 as String,posterPath: freezed == posterPath ? _self.posterPath : posterPath // ignore: cast_nullable_to_non_nullable
 as String?,backdropPath: freezed == backdropPath ? _self.backdropPath : backdropPath // ignore: cast_nullable_to_non_nullable
 as String?,overview: freezed == overview ? _self.overview : overview // ignore: cast_nullable_to_non_nullable
-as String?,releaseDate: freezed == releaseDate ? _self.releaseDate : releaseDate // ignore: cast_nullable_to_non_nullable
-as String?,voteAverage: null == voteAverage ? _self.voteAverage : voteAverage // ignore: cast_nullable_to_non_nullable
+as String?,releaseDate: null == releaseDate ? _self.releaseDate : releaseDate // ignore: cast_nullable_to_non_nullable
+as String,voteAverage: null == voteAverage ? _self.voteAverage : voteAverage // ignore: cast_nullable_to_non_nullable
 as double,voteCount: null == voteCount ? _self.voteCount : voteCount // ignore: cast_nullable_to_non_nullable
 as int,genreIds: null == genreIds ? _self.genreIds : genreIds // ignore: cast_nullable_to_non_nullable
 as List<int>,
@@ -161,7 +161,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int id,  String title, @JsonKey(name: 'poster_path')  String? posterPath, @JsonKey(name: 'backdrop_path')  String? backdropPath,  String? overview, @JsonKey(name: 'release_date')  String? releaseDate, @JsonKey(name: 'vote_average')  double voteAverage, @JsonKey(name: 'vote_count')  int voteCount, @JsonKey(name: 'genre_ids')  List<int> genreIds)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int id,  String title, @JsonKey(name: 'poster_path')  String? posterPath, @JsonKey(name: 'backdrop_path')  String? backdropPath,  String? overview, @JsonKey(name: 'release_date')  String releaseDate, @JsonKey(name: 'vote_average')  double voteAverage, @JsonKey(name: 'vote_count')  int voteCount, @JsonKey(name: 'genre_ids')  List<int> genreIds)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _MovieResults() when $default != null:
 return $default(_that.id,_that.title,_that.posterPath,_that.backdropPath,_that.overview,_that.releaseDate,_that.voteAverage,_that.voteCount,_that.genreIds);case _:
@@ -182,7 +182,7 @@ return $default(_that.id,_that.title,_that.posterPath,_that.backdropPath,_that.o
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int id,  String title, @JsonKey(name: 'poster_path')  String? posterPath, @JsonKey(name: 'backdrop_path')  String? backdropPath,  String? overview, @JsonKey(name: 'release_date')  String? releaseDate, @JsonKey(name: 'vote_average')  double voteAverage, @JsonKey(name: 'vote_count')  int voteCount, @JsonKey(name: 'genre_ids')  List<int> genreIds)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int id,  String title, @JsonKey(name: 'poster_path')  String? posterPath, @JsonKey(name: 'backdrop_path')  String? backdropPath,  String? overview, @JsonKey(name: 'release_date')  String releaseDate, @JsonKey(name: 'vote_average')  double voteAverage, @JsonKey(name: 'vote_count')  int voteCount, @JsonKey(name: 'genre_ids')  List<int> genreIds)  $default,) {final _that = this;
 switch (_that) {
 case _MovieResults():
 return $default(_that.id,_that.title,_that.posterPath,_that.backdropPath,_that.overview,_that.releaseDate,_that.voteAverage,_that.voteCount,_that.genreIds);case _:
@@ -202,7 +202,7 @@ return $default(_that.id,_that.title,_that.posterPath,_that.backdropPath,_that.o
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int id,  String title, @JsonKey(name: 'poster_path')  String? posterPath, @JsonKey(name: 'backdrop_path')  String? backdropPath,  String? overview, @JsonKey(name: 'release_date')  String? releaseDate, @JsonKey(name: 'vote_average')  double voteAverage, @JsonKey(name: 'vote_count')  int voteCount, @JsonKey(name: 'genre_ids')  List<int> genreIds)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int id,  String title, @JsonKey(name: 'poster_path')  String? posterPath, @JsonKey(name: 'backdrop_path')  String? backdropPath,  String? overview, @JsonKey(name: 'release_date')  String releaseDate, @JsonKey(name: 'vote_average')  double voteAverage, @JsonKey(name: 'vote_count')  int voteCount, @JsonKey(name: 'genre_ids')  List<int> genreIds)?  $default,) {final _that = this;
 switch (_that) {
 case _MovieResults() when $default != null:
 return $default(_that.id,_that.title,_that.posterPath,_that.backdropPath,_that.overview,_that.releaseDate,_that.voteAverage,_that.voteCount,_that.genreIds);case _:
@@ -217,7 +217,7 @@ return $default(_that.id,_that.title,_that.posterPath,_that.backdropPath,_that.o
 @JsonSerializable()
 
 class _MovieResults implements MovieResults {
-  const _MovieResults({required this.id, required this.title, @JsonKey(name: 'poster_path') this.posterPath, @JsonKey(name: 'backdrop_path') this.backdropPath, this.overview, @JsonKey(name: 'release_date') this.releaseDate, @JsonKey(name: 'vote_average') required this.voteAverage, @JsonKey(name: 'vote_count') required this.voteCount, @JsonKey(name: 'genre_ids') required final  List<int> genreIds}): _genreIds = genreIds;
+  const _MovieResults({required this.id, required this.title, @JsonKey(name: 'poster_path') this.posterPath, @JsonKey(name: 'backdrop_path') this.backdropPath, this.overview, @JsonKey(name: 'release_date') required this.releaseDate, @JsonKey(name: 'vote_average') required this.voteAverage, @JsonKey(name: 'vote_count') required this.voteCount, @JsonKey(name: 'genre_ids') required final  List<int> genreIds}): _genreIds = genreIds;
   factory _MovieResults.fromJson(Map<String, dynamic> json) => _$MovieResultsFromJson(json);
 
 @override final  int id;
@@ -225,7 +225,7 @@ class _MovieResults implements MovieResults {
 @override@JsonKey(name: 'poster_path') final  String? posterPath;
 @override@JsonKey(name: 'backdrop_path') final  String? backdropPath;
 @override final  String? overview;
-@override@JsonKey(name: 'release_date') final  String? releaseDate;
+@override@JsonKey(name: 'release_date') final  String releaseDate;
 @override@JsonKey(name: 'vote_average') final  double voteAverage;
 @override@JsonKey(name: 'vote_count') final  int voteCount;
  final  List<int> _genreIds;
@@ -269,7 +269,7 @@ abstract mixin class _$MovieResultsCopyWith<$Res> implements $MovieResultsCopyWi
   factory _$MovieResultsCopyWith(_MovieResults value, $Res Function(_MovieResults) _then) = __$MovieResultsCopyWithImpl;
 @override @useResult
 $Res call({
- int id, String title,@JsonKey(name: 'poster_path') String? posterPath,@JsonKey(name: 'backdrop_path') String? backdropPath, String? overview,@JsonKey(name: 'release_date') String? releaseDate,@JsonKey(name: 'vote_average') double voteAverage,@JsonKey(name: 'vote_count') int voteCount,@JsonKey(name: 'genre_ids') List<int> genreIds
+ int id, String title,@JsonKey(name: 'poster_path') String? posterPath,@JsonKey(name: 'backdrop_path') String? backdropPath, String? overview,@JsonKey(name: 'release_date') String releaseDate,@JsonKey(name: 'vote_average') double voteAverage,@JsonKey(name: 'vote_count') int voteCount,@JsonKey(name: 'genre_ids') List<int> genreIds
 });
 
 
@@ -286,15 +286,15 @@ class __$MovieResultsCopyWithImpl<$Res>
 
 /// Create a copy of MovieResults
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? title = null,Object? posterPath = freezed,Object? backdropPath = freezed,Object? overview = freezed,Object? releaseDate = freezed,Object? voteAverage = null,Object? voteCount = null,Object? genreIds = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? title = null,Object? posterPath = freezed,Object? backdropPath = freezed,Object? overview = freezed,Object? releaseDate = null,Object? voteAverage = null,Object? voteCount = null,Object? genreIds = null,}) {
   return _then(_MovieResults(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int,title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
 as String,posterPath: freezed == posterPath ? _self.posterPath : posterPath // ignore: cast_nullable_to_non_nullable
 as String?,backdropPath: freezed == backdropPath ? _self.backdropPath : backdropPath // ignore: cast_nullable_to_non_nullable
 as String?,overview: freezed == overview ? _self.overview : overview // ignore: cast_nullable_to_non_nullable
-as String?,releaseDate: freezed == releaseDate ? _self.releaseDate : releaseDate // ignore: cast_nullable_to_non_nullable
-as String?,voteAverage: null == voteAverage ? _self.voteAverage : voteAverage // ignore: cast_nullable_to_non_nullable
+as String?,releaseDate: null == releaseDate ? _self.releaseDate : releaseDate // ignore: cast_nullable_to_non_nullable
+as String,voteAverage: null == voteAverage ? _self.voteAverage : voteAverage // ignore: cast_nullable_to_non_nullable
 as double,voteCount: null == voteCount ? _self.voteCount : voteCount // ignore: cast_nullable_to_non_nullable
 as int,genreIds: null == genreIds ? _self._genreIds : genreIds // ignore: cast_nullable_to_non_nullable
 as List<int>,

@@ -19,15 +19,15 @@ class SearchScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = SearchController();
     final PagingController<int, MovieResults> pagingController =
         PagingController<int, MovieResults>(
           getNextPageKey: (state) =>
               state.lastPageIsEmpty ? null : state.nextIntPageKey,
           fetchPage: (pageKey) {
-            final query = context.read<SearchBloc>().state.maybeWhen(
-              load: (q) => q,
-              orElse: () => '',
-            );
+            // Берём актуальное значение из текстового контроллера,
+            // чтобы не зависеть от контекста Bloc внутри fetchPage.
+            final query = controller.text;
 
             if (query.trim().isEmpty) return Future.value([]);
 
@@ -38,7 +38,6 @@ class SearchScreen extends StatelessWidget {
           },
         );
     final currentRoute = context.router.current.name;
-    final controller = SearchController();
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -63,6 +62,8 @@ class SearchScreen extends StatelessWidget {
                     context.read<SearchBloc>().add(
                       SearchEvent.queryChanged(value),
                     );
+                    // Каждый новый ввод в строку поиска перезапускает пагинацию.
+                    pagingController.refresh();
                   },
                 ),
                 const SizedBox(height: 8),
@@ -73,9 +74,15 @@ class SearchScreen extends StatelessWidget {
                     fetchNextPage: fetchNextPage,
                     builderDelegate: PagedChildBuilderDelegate<MovieResults>(
                       noItemsFoundIndicatorBuilder: (context) => Center(
-                        child: Text(
-                          "No movies found",
-                          style: TextStyle(color: Colors.white),
+                        child: Column(
+                          mainAxisAlignment: .center,
+                          children: [
+                            Icon(Icons.search,size: 100,),
+                            Text(
+                              "Search movies...",
+                              style: TextStyle(color: Colors.white,fontSize: 18),
+                            ),
+                          ],
                         ),
                       ),
                       firstPageProgressIndicatorBuilder: (context) =>
@@ -93,7 +100,7 @@ class SearchScreen extends StatelessWidget {
                               Padding(
                                 padding: const EdgeInsets.only(left: 16),
                                 child: Text(
-                                  MovieStrings.popularMovies(context),
+                                  MovieStrings.searchResults(context),
                                   style: const TextStyle(fontSize: 16),
                                 ),
                               ),
@@ -102,12 +109,12 @@ class SearchScreen extends StatelessWidget {
                                 date: movie.releaseDate,
                                 voteAverage: movie.voteAverage,
                                 voteCount: movie.voteCount,
-                                pictureUrl: movie.posterPath ?? '',
+                                pictureUrl: movie.posterPath,
                                 callback: () {
                                   context.pushRoute(
                                     MovieInfoRoute(
                                       movieID: movie.id,
-                                      releaseDate: movie.releaseDate ?? '',
+                                      releaseDate: movie.releaseDate ,
                                     ),
                                   );
                                 },
@@ -121,12 +128,12 @@ class SearchScreen extends StatelessWidget {
                           date: movie.releaseDate,
                           voteAverage: movie.voteAverage,
                           voteCount: movie.voteCount,
-                          pictureUrl: movie.posterPath ?? "",
+                          pictureUrl: movie.posterPath ,
                           callback: () {
                             context.pushRoute(
                               MovieInfoRoute(
                                 movieID: movie.id,
-                                releaseDate: movie.releaseDate ?? '',
+                                releaseDate: movie.releaseDate,
                               ),
                             );
                           },

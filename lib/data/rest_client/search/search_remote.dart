@@ -16,6 +16,6 @@ abstract class SearchRemote {
     @Query("query") String? query,
     @Query("page") int page = 1,
     @Query("language") String? language,
-    @Query("include_adult") bool includeAdult = false,
+    @Query("include_adult") bool includeAdult = true,
   });
 }

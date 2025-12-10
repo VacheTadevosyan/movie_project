@@ -13,7 +13,7 @@ _MovieResults _$MovieResultsFromJson(Map<String, dynamic> json) =>
       posterPath: json['poster_path'] as String?,
       backdropPath: json['backdrop_path'] as String?,
       overview: json['overview'] as String?,
-      releaseDate: json['release_date'] as String?,
+      releaseDate: json['release_date'] as String,
       voteAverage: (json['vote_average'] as num).toDouble(),
       voteCount: (json['vote_count'] as num).toInt(),
       genreIds: (json['genre_ids'] as List<dynamic>)
