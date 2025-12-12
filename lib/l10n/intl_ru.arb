@@ -10,5 +10,8 @@
   "movieDetails": "О фильме",
   "overview": "Описание",
   "genres": "Жанры",
-  "searchResults": "Результаты поиска"
+  "searchResults": "Результаты поиска",
+  "lightTheme": "Светлая тема",
+  "darkTheme": "Темная тема",
+  "selectTheme": "Выберите тему"
 }

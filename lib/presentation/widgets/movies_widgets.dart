@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:movie_project/configs/app_theme.dart';
 import 'package:movie_project/configs/constants/Strings/strings.dart';
 import 'package:movie_project/configs/constants/colors/colors.dart';
 import 'package:flutter_svg/svg.dart';
 
 class MoviesWidget extends StatelessWidget {
-  const MoviesWidget({
+   const MoviesWidget({
     super.key,
     required this.title,
     required this.date,
@@ -49,7 +50,6 @@ class MoviesWidget extends StatelessWidget {
                       fit: BoxFit.cover,
                       height: double.infinity,
                     ) : Container(
-                    color: Colors.white,
                     alignment: Alignment.center,
                     child: SvgPicture.asset(
                       'assets/images/image_not_founded.svg',
@@ -66,38 +66,37 @@ class MoviesWidget extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.only(right: 8.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              title,
-                              maxLines: 2,
-                              softWrap: true,
-                              overflow: TextOverflow.ellipsis,
-                              style: TextStyle(color: MovieColors.whiteText),
-                            ),
-                            SizedBox(height: 4),
-                            Text(
-                              date.length > 4 ? date.substring(0,4) : date,
-                              style: TextStyle(color: MovieColors.greyText),
-                            ),
-                          ],
-                        ),
+                      Row(
+                        mainAxisAlignment: .spaceBetween,
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                title,
+                                maxLines: 2,
+                                softWrap: true,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                              SizedBox(height: 4),
+                              Text(
+                                date.length > 4 ? date.substring(0,4) : date,
+                              ),
+                            ],
+                          ),
+                          IconButton(onPressed: (){}, icon: Icon(Icons.favorite_border,))
+                        ],
                       ),
                       SizedBox(
                         child: Row(
                           children: [
-                            Icon(Icons.star, color: Colors.yellow),
+                            Icon(Icons.star, color: MovieColors.yellow),
                             Text(
                               voteAverage.toString().substring(0, 3),
-                              style: TextStyle(color: MovieColors.whiteText),
                             ),
                             SizedBox(width: 6),
                             Text(
                               "($voteCount)",
-                              style: TextStyle(color: MovieColors.greyText),
                             ),
                           ],
                         ),

@@ -10,6 +10,7 @@ class SearchBarWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Column(
       children: [
         Padding(
@@ -22,7 +23,7 @@ class SearchBarWidget extends StatelessWidget {
             shape: WidgetStateProperty.all(
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
             ),
-            backgroundColor: WidgetStateProperty.all(Color(0xFF1F2938)),
+            backgroundColor: WidgetStateProperty.all(theme.cardColor),
             onChanged: (value) {
               function?.call(value);
             },

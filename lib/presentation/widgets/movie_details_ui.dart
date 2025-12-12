@@ -11,8 +11,9 @@ Widget movieDetailsUI({
   required MovieDetailModel? movie,
   required String releaseDate,
 }) {
+  final theme = Theme.of(context);
   return movie != null ? Center(
-    child: Column(
+  child: Column(
       children: [
         Stack(
           children: [
@@ -37,7 +38,7 @@ Widget movieDetailsUI({
                   gradient: LinearGradient(
                     begin: AlignmentGeometry.topCenter,
                     end: AlignmentGeometry.bottomCenter,
-                    colors: [Colors.transparent, MovieColors.background],
+                    colors: [Colors.transparent, theme.scaffoldBackgroundColor],
                   ),
                 ),
               ),
@@ -90,7 +91,7 @@ Widget movieDetailsUI({
                           softWrap: true,
                           style: TextStyle(
                             fontSize: 15,
-                            color: MovieColors.greyText,
+                            color: MovieColors.grey,
                           ),
                         ),
                       ),
@@ -107,13 +108,13 @@ Widget movieDetailsUI({
             InformationWidget(
               icon: Icons.star,
               title: movie.voteAverage.toString().substring(0, 3),
-              iconColor: Colors.yellow,
+              iconColor: MovieColors.yellow,
               secondTitle: "(${movie.voteCount})",
             ),
             InformationWidget(
               icon: Icons.calendar_today_outlined,
               title: releaseDate.substring(0, 4),
-              iconColor: MovieColors.greyText,
+              iconColor: MovieColors.grey,
             ),
           ],
         ),
@@ -137,7 +138,7 @@ Widget movieDetailsUI({
               SizedBox(height: 16),
               Text(
                 movie.overview,
-                style: TextStyle(fontSize: 16, color: MovieColors.greyText),
+                style: TextStyle(fontSize: 16, color: MovieColors.grey),
               ),
             ],
           ),

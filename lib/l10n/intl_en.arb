@@ -10,5 +10,8 @@
   "movieDetails": "Movie Details",
   "overview": "Overview",
   "genres": "Genres",
-  "searchResults": "Search Results"
+  "searchResults": "Search Results",
+  "lightTheme": "Light Theme",
+  "darkTheme": "Dark Theme",
+  "selectTheme": "Select Theme"
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:movie_project/configs/constants/colors/colors.dart';
 
 class InformationWidget extends StatelessWidget {
@@ -17,13 +18,14 @@ class InformationWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8.0),
       child: Container(
         height: 50,
         width: 120,
         decoration: BoxDecoration(
-          color: MovieColors.darkBlue,
+          color: theme.colorScheme.primary,
           borderRadius: BorderRadius.all(Radius.circular(16)),
         ),
         child: Row(
@@ -34,7 +36,7 @@ class InformationWidget extends StatelessWidget {
             ?secondTitle != null
                 ? Text(
                     secondTitle!,
-                    style: TextStyle(color: MovieColors.greyText),
+                    style: TextStyle(color: MovieColors.grey),
                   )
                 : null,
           ],

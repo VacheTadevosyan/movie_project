@@ -26,6 +26,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     final currentRoute = context.router.current.name;
     return BlocProvider(
       create: (context) => HomeBloc()..add(const HomeEvent.load()),
@@ -34,7 +35,6 @@ class HomeScreen extends StatelessWidget {
           automaticallyImplyLeading: false,
           title: Text(
             MovieStrings.homeTitle(context),
-            style: TextStyle(color: MovieColors.whiteText),
           ),
           backgroundColor: MovieColors.darkBlue,
         ),
@@ -69,7 +69,7 @@ class HomeScreen extends StatelessWidget {
                           ),
                           MoviesWidget(
                             title: movie.title,
-                            date: movie.releaseDate ?? "",
+                            date: movie.releaseDate,
                             voteAverage: movie.voteAverage,
                             voteCount: movie.voteCount,
                             pictureUrl: movie.posterPath ?? "",
@@ -77,7 +77,7 @@ class HomeScreen extends StatelessWidget {
                               context.pushRoute(
                                 MovieInfoRoute(
                                   movieID: movie.id,
-                                  releaseDate: movie.releaseDate ?? "",
+                                  releaseDate: movie.releaseDate,
                                 ),
                               );
                             },
@@ -88,7 +88,7 @@ class HomeScreen extends StatelessWidget {
 
                     return MoviesWidget(
                       title: movie.title,
-                      date: movie.releaseDate ?? '',
+                      date: movie.releaseDate,
                       voteAverage: movie.voteAverage,
                       voteCount: movie.voteCount,
                       pictureUrl: movie.posterPath ?? '',
@@ -96,7 +96,7 @@ class HomeScreen extends StatelessWidget {
                         context.pushRoute(
                           MovieInfoRoute(
                             movieID: movie.id,
-                            releaseDate: movie.releaseDate ?? '',
+                            releaseDate: movie.releaseDate,
                           ),
                         );
                       },
@@ -119,11 +119,11 @@ class HomeScreen extends StatelessWidget {
                 onTap: () {},
                 text: MovieStrings.homeBottom(context),
                 textColor: currentRoute == HomeRoute.name
-                    ? Colors.blue
-                    : MovieColors.whiteText,
+                    ? MovieColors.lightBlue
+                    : theme.colorScheme.onSurface,
                 iconColor: currentRoute == HomeRoute.name
-                    ? Colors.blue
-                    : MovieColors.whiteItem,
+                    ? MovieColors.lightBlue
+                    : theme.colorScheme.onSurface,
               ),
               Bottoms(
                 icon: Icons.search,
@@ -131,8 +131,17 @@ class HomeScreen extends StatelessWidget {
                   context.pushRoute(SearchRoute());
                 },
                 text: MovieStrings.searchBottom(context),
-                textColor: MovieColors.whiteText,
-                iconColor: MovieColors.whiteItem,
+                textColor: theme.colorScheme.onSurface,
+                iconColor: theme.colorScheme.onSurface,
+              ),
+              Bottoms(
+                icon: Icons.favorite,
+                onTap: () {
+                  context.pushRoute(SearchRoute());
+                },
+                text: MovieStrings.searchBottom(context),
+                textColor: theme.colorScheme.onSurface,
+                iconColor: theme.colorScheme.onSurface,
               ),
               Bottoms(
                 icon: Icons.settings,
@@ -140,8 +149,8 @@ class HomeScreen extends StatelessWidget {
                   context.router.replace(const SettingsRoute());
                 },
                 text: MovieStrings.settingsBottom(context),
-                textColor: MovieColors.whiteText,
-                iconColor: MovieColors.whiteItem,
+                textColor: theme.colorScheme.onSurface,
+                iconColor: theme.colorScheme.onSurface,
               ),
             ],
           ),

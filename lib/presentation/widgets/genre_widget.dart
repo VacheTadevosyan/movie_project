@@ -1,4 +1,6 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:movie_project/configs/constants/colors/colors.dart';
 import 'package:movie_project/domain/model/movie_model/genre_model/genre_model.dart';
 
 class GenreWidget extends StatelessWidget {
@@ -8,6 +10,7 @@ class GenreWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return SizedBox(
       height: 40,
       child: ListView.builder(
@@ -22,11 +25,9 @@ class GenreWidget extends StatelessWidget {
               alignment: Alignment.center,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(60)),
-                color: Color(0xFF0A183F),
+                color: theme.colorScheme.primary,
               ),
-              child: Text(genre[index].name,style: TextStyle(
-                color: Color(0xFF58A0FD)
-              ),),
+              child: Text(genre[index].name),
             ),
           );
         },

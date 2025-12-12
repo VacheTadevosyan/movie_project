@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movie_project/configs/constants/colors/colors.dart';
 
 class Bottoms extends StatelessWidget {
   const Bottoms({
@@ -6,8 +7,8 @@ class Bottoms extends StatelessWidget {
     required this.icon,
     this.text = ' ',
     required this.onTap,
-    this.textColor = Colors.black,
-    this.iconColor = Colors.black,
+    this.textColor = MovieColors.black,
+    this.iconColor = MovieColors.black,
   });
 
   final IconData icon;

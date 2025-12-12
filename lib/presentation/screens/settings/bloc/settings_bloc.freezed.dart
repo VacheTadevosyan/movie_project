@@ -55,11 +55,12 @@ extension SettingsEventPatterns on SettingsEvent {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( LoadLocale value)?  loadLocale,TResult Function( SettingsInitEvent value)?  initial,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( LoadLocale value)?  loadLocale,TResult Function( LoadTheme value)?  loadTheme,TResult Function( SettingsInitEvent value)?  initial,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case LoadLocale() when loadLocale != null:
-return loadLocale(_that);case SettingsInitEvent() when initial != null:
+return loadLocale(_that);case LoadTheme() when loadTheme != null:
+return loadTheme(_that);case SettingsInitEvent() when initial != null:
 return initial(_that);case _:
   return orElse();
 
@@ -78,11 +79,12 @@ return initial(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( LoadLocale value)  loadLocale,required TResult Function( SettingsInitEvent value)  initial,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( LoadLocale value)  loadLocale,required TResult Function( LoadTheme value)  loadTheme,required TResult Function( SettingsInitEvent value)  initial,}){
 final _that = this;
 switch (_that) {
 case LoadLocale():
-return loadLocale(_that);case SettingsInitEvent():
+return loadLocale(_that);case LoadTheme():
+return loadTheme(_that);case SettingsInitEvent():
 return initial(_that);case _:
   throw StateError('Unexpected subclass');
 
@@ -100,11 +102,12 @@ return initial(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( LoadLocale value)?  loadLocale,TResult? Function( SettingsInitEvent value)?  initial,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( LoadLocale value)?  loadLocale,TResult? Function( LoadTheme value)?  loadTheme,TResult? Function( SettingsInitEvent value)?  initial,}){
 final _that = this;
 switch (_that) {
 case LoadLocale() when loadLocale != null:
-return loadLocale(_that);case SettingsInitEvent() when initial != null:
+return loadLocale(_that);case LoadTheme() when loadTheme != null:
+return loadTheme(_that);case SettingsInitEvent() when initial != null:
 return initial(_that);case _:
   return null;
 
@@ -122,10 +125,11 @@ return initial(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String locale)?  loadLocale,TResult Function()?  initial,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String locale)?  loadLocale,TResult Function( bool isDarkMode)?  loadTheme,TResult Function()?  initial,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case LoadLocale() when loadLocale != null:
-return loadLocale(_that.locale);case SettingsInitEvent() when initial != null:
+return loadLocale(_that.locale);case LoadTheme() when loadTheme != null:
+return loadTheme(_that.isDarkMode);case SettingsInitEvent() when initial != null:
 return initial();case _:
   return orElse();
 
@@ -144,10 +148,11 @@ return initial();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String locale)  loadLocale,required TResult Function()  initial,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String locale)  loadLocale,required TResult Function( bool isDarkMode)  loadTheme,required TResult Function()  initial,}) {final _that = this;
 switch (_that) {
 case LoadLocale():
-return loadLocale(_that.locale);case SettingsInitEvent():
+return loadLocale(_that.locale);case LoadTheme():
+return loadTheme(_that.isDarkMode);case SettingsInitEvent():
 return initial();case _:
   throw StateError('Unexpected subclass');
 
@@ -165,10 +170,11 @@ return initial();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String locale)?  loadLocale,TResult? Function()?  initial,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String locale)?  loadLocale,TResult? Function( bool isDarkMode)?  loadTheme,TResult? Function()?  initial,}) {final _that = this;
 switch (_that) {
 case LoadLocale() when loadLocale != null:
-return loadLocale(_that.locale);case SettingsInitEvent() when initial != null:
+return loadLocale(_that.locale);case LoadTheme() when loadTheme != null:
+return loadTheme(_that.isDarkMode);case SettingsInitEvent() when initial != null:
 return initial();case _:
   return null;
 
@@ -237,6 +243,72 @@ class _$LoadLocaleCopyWithImpl<$Res>
   return _then(LoadLocale(
 null == locale ? _self.locale : locale // ignore: cast_nullable_to_non_nullable
 as String,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class LoadTheme implements SettingsEvent {
+  const LoadTheme(this.isDarkMode);
+
+
+ final  bool isDarkMode;
+
+/// Create a copy of SettingsEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$LoadThemeCopyWith<LoadTheme> get copyWith => _$LoadThemeCopyWithImpl<LoadTheme>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is LoadTheme&&(identical(other.isDarkMode, isDarkMode) || other.isDarkMode == isDarkMode));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,isDarkMode);
+
+@override
+String toString() {
+  return 'SettingsEvent.loadTheme(isDarkMode: $isDarkMode)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $LoadThemeCopyWith<$Res> implements $SettingsEventCopyWith<$Res> {
+  factory $LoadThemeCopyWith(LoadTheme value, $Res Function(LoadTheme) _then) = _$LoadThemeCopyWithImpl;
+@useResult
+$Res call({
+ bool isDarkMode
+});
+
+
+
+
+}
+/// @nodoc
+class _$LoadThemeCopyWithImpl<$Res>
+    implements $LoadThemeCopyWith<$Res> {
+  _$LoadThemeCopyWithImpl(this._self, this._then);
+
+  final LoadTheme _self;
+  final $Res Function(LoadTheme) _then;
+
+/// Create a copy of SettingsEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? isDarkMode = null,}) {
+  return _then(LoadTheme(
+null == isDarkMode ? _self.isDarkMode : isDarkMode // ignore: cast_nullable_to_non_nullable
+as bool,
   ));
 }
 
@@ -386,11 +458,11 @@ return localeLoaded(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function( String locale)?  localeLoaded,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function( String locale,  bool isDarkMode)?  localeLoaded,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case Initial() when initial != null:
 return initial();case LocalLoaded() when localeLoaded != null:
-return localeLoaded(_that.locale);case _:
+return localeLoaded(_that.locale,_that.isDarkMode);case _:
   return orElse();
 
 }
@@ -408,11 +480,11 @@ return localeLoaded(_that.locale);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function( String locale)  localeLoaded,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function( String locale,  bool isDarkMode)  localeLoaded,}) {final _that = this;
 switch (_that) {
 case Initial():
 return initial();case LocalLoaded():
-return localeLoaded(_that.locale);case _:
+return localeLoaded(_that.locale,_that.isDarkMode);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -429,11 +501,11 @@ return localeLoaded(_that.locale);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function( String locale)?  localeLoaded,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function( String locale,  bool isDarkMode)?  localeLoaded,}) {final _that = this;
 switch (_that) {
 case Initial() when initial != null:
 return initial();case LocalLoaded() when localeLoaded != null:
-return localeLoaded(_that.locale);case _:
+return localeLoaded(_that.locale,_that.isDarkMode);case _:
   return null;
 
 }
@@ -477,10 +549,11 @@ String toString() {
 
 
 class LocalLoaded implements SettingsState {
-  const LocalLoaded(this.locale);
+  const LocalLoaded({required this.locale, required this.isDarkMode});
   
 
  final  String locale;
+ final  bool isDarkMode;
 
 /// Create a copy of SettingsState
 /// with the given fields replaced by the non-null parameter values.
@@ -492,16 +565,16 @@ $LocalLoadedCopyWith<LocalLoaded> get copyWith => _$LocalLoadedCopyWithImpl<Loca
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is LocalLoaded&&(identical(other.locale, locale) || other.locale == locale));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is LocalLoaded&&(identical(other.locale, locale) || other.locale == locale)&&(identical(other.isDarkMode, isDarkMode) || other.isDarkMode == isDarkMode));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,locale);
+int get hashCode => Object.hash(runtimeType,locale,isDarkMode);
 
 @override
 String toString() {
-  return 'SettingsState.localeLoaded(locale: $locale)';
+  return 'SettingsState.localeLoaded(locale: $locale, isDarkMode: $isDarkMode)';
 }
 
 
@@ -512,7 +585,7 @@ abstract mixin class $LocalLoadedCopyWith<$Res> implements $SettingsStateCopyWit
   factory $LocalLoadedCopyWith(LocalLoaded value, $Res Function(LocalLoaded) _then) = _$LocalLoadedCopyWithImpl;
 @useResult
 $Res call({
- String locale
+ String locale, bool isDarkMode
 });
 
 
@@ -529,10 +602,11 @@ class _$LocalLoadedCopyWithImpl<$Res>
 
 /// Create a copy of SettingsState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? locale = null,}) {
+@pragma('vm:prefer-inline') $Res call({Object? locale = null,Object? isDarkMode = null,}) {
   return _then(LocalLoaded(
-null == locale ? _self.locale : locale // ignore: cast_nullable_to_non_nullable
-as String,
+locale: null == locale ? _self.locale : locale // ignore: cast_nullable_to_non_nullable
+as String,isDarkMode: null == isDarkMode ? _self.isDarkMode : isDarkMode // ignore: cast_nullable_to_non_nullable
+as bool,
   ));
 }
 

@@ -14,6 +14,9 @@ abstract class MovieStrings {
   static String overview(BuildContext context) => S.of(context).overview;
   static String genres(BuildContext context) => S.of(context).genres;
   static String searchResults(BuildContext context) => S.of(context).searchResults;
+  static String lightTheme(BuildContext context) => S.of(context).lightTheme;
+  static String darkTheme(BuildContext context) => S.of(context).darkTheme;
+  static String selectTheme(BuildContext context) => S.of(context).selectTheme;
 
   ///BOTTOMS
   static String homeBottom(BuildContext context) => S.of(context).home;

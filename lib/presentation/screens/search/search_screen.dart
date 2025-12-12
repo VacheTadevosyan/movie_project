@@ -19,14 +19,13 @@ class SearchScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     final controller = SearchController();
     final PagingController<int, MovieResults> pagingController =
         PagingController<int, MovieResults>(
           getNextPageKey: (state) =>
               state.lastPageIsEmpty ? null : state.nextIntPageKey,
           fetchPage: (pageKey) {
-            // Берём актуальное значение из текстового контроллера,
-            // чтобы не зависеть от контекста Bloc внутри fetchPage.
             final query = controller.text;
 
             if (query.trim().isEmpty) return Future.value([]);
@@ -44,9 +43,8 @@ class SearchScreen extends StatelessWidget {
 
         title: Text(
           MovieStrings.searchTitle(context),
-          style: TextStyle(color: Colors.white),
         ),
-        backgroundColor: Color(0x101829FF),
+        backgroundColor: MovieColors.darkBlue,
       ),
       body: BlocProvider(
         create: (context) => SearchBloc()..add(const SearchEvent.load()),
@@ -62,7 +60,6 @@ class SearchScreen extends StatelessWidget {
                     context.read<SearchBloc>().add(
                       SearchEvent.queryChanged(value),
                     );
-                    // Каждый новый ввод в строку поиска перезапускает пагинацию.
                     pagingController.refresh();
                   },
                 ),
@@ -80,7 +77,7 @@ class SearchScreen extends StatelessWidget {
                             Icon(Icons.search,size: 100,),
                             Text(
                               "Search movies...",
-                              style: TextStyle(color: Colors.white,fontSize: 18),
+                              style: TextStyle(fontSize: 18),
                             ),
                           ],
                         ),
@@ -160,19 +157,19 @@ class SearchScreen extends StatelessWidget {
                 context.pushRoute(HomeRoute());
               },
               text: MovieStrings.homeBottom(context),
-              textColor: Colors.white,
-              iconColor: Colors.white,
+              textColor: theme.colorScheme.onSurface,
+              iconColor: theme.colorScheme.onSurface,
             ),
             Bottoms(
               icon: Icons.search,
               onTap: () {},
               text: MovieStrings.searchBottom(context),
               textColor: currentRoute == SearchRoute.name
-                  ? Colors.blue
-                  : MovieColors.whiteText,
+                  ? MovieColors.lightBlue
+                  : theme.colorScheme.onSurface,
               iconColor: currentRoute == SearchRoute.name
-                  ? Colors.blue
-                  : MovieColors.whiteItem,
+                  ? MovieColors.lightBlue
+                  : theme.colorScheme.onSurface,
             ),
             Bottoms(
               icon: Icons.settings,
@@ -180,8 +177,8 @@ class SearchScreen extends StatelessWidget {
                 context.pushRoute(SettingsRoute());
               },
               text: MovieStrings.settingsBottom(context),
-              textColor: Colors.white,
-              iconColor: Colors.white,
+              textColor: theme.colorScheme.onSurface,
+              iconColor: theme.colorScheme.onSurface,
             ),
           ],
         ),

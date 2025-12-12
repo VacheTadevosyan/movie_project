@@ -138,6 +138,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Light Theme`
+  String get lightTheme {
+    return Intl.message('Light Theme', name: 'lightTheme', desc: '', args: []);
+  }
+
+  /// `Dark Theme`
+  String get darkTheme {
+    return Intl.message('Dark Theme', name: 'darkTheme', desc: '', args: []);
+  }
+
+  /// `Select Theme`
+  String get selectTheme {
+    return Intl.message(
+      'Select Theme',
+      name: 'selectTheme',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
