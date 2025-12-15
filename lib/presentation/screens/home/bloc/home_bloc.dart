@@ -1,9 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:movie_project/configs/app_local.dart';
 import 'package:movie_project/data/repository/movie_repository.dart';
-import 'package:movie_project/domain/model/movie_model/movie_response/movie_response_model.dart';
-import 'package:movie_project/domain/model/movie_model/movie_resultes/movie_results.dart';
+import 'package:movie_project/domain/model/movie_model/movie_results/movie_results.dart';
 
 part 'home_event.dart';
 part 'home_state.dart';

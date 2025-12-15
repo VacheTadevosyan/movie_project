@@ -22,7 +22,7 @@ class Bottoms extends StatelessWidget {
     return Column(
       children: [
         IconButton(onPressed: onTap, icon: Icon(icon, color: iconColor,),),
-        Text(text, style: TextStyle(color: textColor)),
+        GestureDetector(onTap: onTap,child: Text(text, style: TextStyle(color: textColor)),),
       ],
     );
   }

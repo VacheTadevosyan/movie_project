@@ -114,7 +114,7 @@ Widget movieDetailsUI({
             InformationWidget(
               icon: Icons.calendar_today_outlined,
               title: releaseDate.substring(0, 4),
-              iconColor: MovieColors.grey,
+              iconColor: theme.colorScheme.onSurface,
             ),
           ],
         ),

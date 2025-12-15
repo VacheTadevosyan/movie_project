@@ -3,7 +3,7 @@ import 'package:movie_project/configs/app_local.dart';
 import 'package:movie_project/configs/constants/Strings/strings.dart';
 import 'package:movie_project/data/rest_client/search/search_remote.dart';
 import 'package:movie_project/domain/model/movie_model/movie_response/movie_response_model.dart';
-import 'package:movie_project/domain/model/movie_model/movie_resultes/movie_results.dart';
+import 'package:movie_project/domain/model/movie_model/movie_results/movie_results.dart';
 
 class SearchRepository {
   final SearchRemote _searchRemote = SearchRemote(Dio());

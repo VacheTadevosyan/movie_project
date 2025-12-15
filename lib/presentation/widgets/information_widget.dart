@@ -36,7 +36,7 @@ class InformationWidget extends StatelessWidget {
             ?secondTitle != null
                 ? Text(
                     secondTitle!,
-                    style: TextStyle(color: MovieColors.grey),
+                    style: TextStyle(color: theme.colorScheme.onSurface),
                   )
                 : null,
           ],

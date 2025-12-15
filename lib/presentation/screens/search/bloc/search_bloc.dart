@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:movie_project/data/repository/search_repository.dart';
-import 'package:movie_project/domain/model/movie_model/movie_resultes/movie_results.dart';
+import 'package:movie_project/domain/model/movie_model/movie_results/movie_results.dart';
 
 part 'search_bloc.freezed.dart';
 part 'search_event.dart';

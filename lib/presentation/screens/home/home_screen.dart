@@ -6,7 +6,7 @@ import 'package:movie_project/configs/constants/Strings/strings.dart';
 import 'package:movie_project/configs/constants/colors/colors.dart';
 import 'package:movie_project/configs/routes/router.dart';
 import 'package:movie_project/data/repository/movie_repository.dart';
-import 'package:movie_project/domain/model/movie_model/movie_resultes/movie_results.dart';
+import 'package:movie_project/domain/model/movie_model/movie_results/movie_results.dart';
 import 'package:movie_project/presentation/widgets/bottoms.dart';
 import 'package:movie_project/presentation/widgets/movies_widgets.dart';
 
