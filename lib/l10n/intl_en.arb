@@ -3,6 +3,7 @@
   "search": "Search",
   "settings": "Settings",
   "home": "Home",
+  "favoriteTitle": "Favorite Movies",
   "selectLanguage": "Select Language",
   "version": "Version",
   "about": "About",
@@ -13,5 +14,6 @@
   "searchResults": "Search Results",
   "lightTheme": "Light Theme",
   "darkTheme": "Dark Theme",
-  "selectTheme": "Select Theme"
+  "selectTheme": "Select Theme",
+  "favorite": "Favorite"
 }

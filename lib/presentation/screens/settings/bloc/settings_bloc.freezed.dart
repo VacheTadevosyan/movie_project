@@ -254,7 +254,7 @@ as String,
 
 class LoadTheme implements SettingsEvent {
   const LoadTheme(this.isDarkMode);
-
+  
 
  final  bool isDarkMode;
 

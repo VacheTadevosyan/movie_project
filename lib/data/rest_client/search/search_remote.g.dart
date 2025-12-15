@@ -27,7 +27,7 @@ class _SearchRemote implements SearchRemote {
     String? query,
     int page = 1,
     String? language,
-    bool includeAdult = false,
+    bool includeAdult = true,
   }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{

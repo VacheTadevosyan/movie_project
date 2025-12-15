@@ -114,7 +114,7 @@ class SearchScreen extends StatelessWidget {
                                       releaseDate: movie.releaseDate ,
                                     ),
                                   );
-                                },
+                                }, id: movie.id,
                               ),
                             ],
                           );
@@ -133,7 +133,7 @@ class SearchScreen extends StatelessWidget {
                                 releaseDate: movie.releaseDate,
                               ),
                             );
-                          },
+                          }, id: movie.id,
                         );
                       },
                     ),
@@ -168,6 +168,19 @@ class SearchScreen extends StatelessWidget {
                   ? MovieColors.lightBlue
                   : theme.colorScheme.onSurface,
               iconColor: currentRoute == SearchRoute.name
+                  ? MovieColors.lightBlue
+                  : theme.colorScheme.onSurface,
+            ),
+            Bottoms(
+              icon: Icons.favorite,
+              onTap: () {
+                context.pushRoute(FavoritesRoute());
+              },
+              text: MovieStrings.favoriteBottom(context),
+              textColor: currentRoute == FavoritesRoute.name
+                  ? MovieColors.lightBlue
+                  : theme.colorScheme.onSurface,
+              iconColor: currentRoute == FavoritesRoute.name
                   ? MovieColors.lightBlue
                   : theme.colorScheme.onSurface,
             ),

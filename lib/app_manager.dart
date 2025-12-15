@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
                   surface: MovieColors.white,
                   onPrimary: MovieColors.white,
                   onSecondary: MovieColors.white,
-                  onSurface: Colors.black87,
+                  onSurface: MovieColors.black,
                 ),
                 appBarTheme: AppBarTheme(
                   backgroundColor: MovieColors.white,
@@ -47,10 +47,10 @@ class MyApp extends StatelessWidget {
                   elevation: 1,
                 ),
                 textTheme: TextTheme(
-                  bodyLarge: TextStyle(color: Colors.black87),
-                  bodyMedium: TextStyle(color: Colors.black87),
+                  bodyLarge: TextStyle(color: MovieColors.black),
+                  bodyMedium: TextStyle(color: MovieColors.black),
                   titleLarge: TextStyle(
-                    color: Colors.black87,
+                    color: MovieColors.black,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -61,19 +61,20 @@ class MyApp extends StatelessWidget {
                 colorScheme: ColorScheme.dark(
                   primary: MovieColors.darkBlue,
                   surface: Color(0xFF121212),
-                  onPrimary: Colors.white,
-                  onSecondary: Colors.black,
+                  onPrimary: MovieColors.white,
+                  onSecondary: MovieColors.black,
                   onSurface: Colors.white70,
-                ),                appBarTheme: AppBarTheme(
-                  foregroundColor: Colors.blue.shade700,
+                ),
+                appBarTheme: AppBarTheme(
+                  foregroundColor: MovieColors.lightBlue,
                   elevation: 1,
                 ),
 
                 textTheme: TextTheme(
-                  bodyLarge: TextStyle(color: Colors.white),
+                  bodyLarge: TextStyle(color: MovieColors.white),
                   bodyMedium: TextStyle(color: Colors.white70),
                   titleLarge: TextStyle(
-                    color: Colors.white,
+                    color: MovieColors.white,
                     fontWeight: FontWeight.bold,
                   ),
                 ),

@@ -9,6 +9,7 @@ abstract class MovieStrings {
   static String searchTitle(BuildContext context) => S.of(context).search;
   static String settingsTitle(BuildContext context) => S.of(context).settings;
   static String movieInfoTitle(BuildContext context) => S.of(context).movieDetails;
+  static String favoriteTitle(BuildContext context) => S.of(context).favoriteTitle;
 
   static String popularMovies(BuildContext context) => S.of(context).popularMovies;
   static String overview(BuildContext context) => S.of(context).overview;
@@ -22,6 +23,7 @@ abstract class MovieStrings {
   static String homeBottom(BuildContext context) => S.of(context).home;
   static String searchBottom(BuildContext context) => S.of(context).search;
   static String settingsBottom(BuildContext context) => S.of(context).settings;
+  static String favoriteBottom(BuildContext context) => S.of(context).favorite;
 
   ///SETTINGS
   static String about(BuildContext context) => S.of(context).about;

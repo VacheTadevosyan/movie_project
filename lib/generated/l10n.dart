@@ -79,6 +79,16 @@ class S {
     return Intl.message('Home', name: 'home', desc: '', args: []);
   }
 
+  /// `Favorite Movies`
+  String get favoriteTitle {
+    return Intl.message(
+      'Favorite Movies',
+      name: 'favoriteTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Select Language`
   String get selectLanguage {
     return Intl.message(
@@ -157,6 +167,11 @@ class S {
       desc: '',
       args: [],
     );
+  }
+
+  /// `Favorite`
+  String get favorite {
+    return Intl.message('Favorite', name: 'favorite', desc: '', args: []);
   }
 }
 

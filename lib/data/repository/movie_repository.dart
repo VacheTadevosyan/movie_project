@@ -18,13 +18,6 @@ class MoviesRepository {
 
     return response;
   }
-
-  // Future<List<MovieResults>> getMovieResults() async {
-  //   final local = (await AppLocale().getLocale()).languageCode;
-  //   final response = await _movieRemote.getPopularMovieResults(MovieStrings.apiKey, 1 , local);
-  //   return response;
-  // }
-
   Future<List<MovieResults>> getMovieResults({required int page}) async {
     final local = (await AppLocale().getLocale()).languageCode;
     final response = await _movieRemote.getPopularMovie(

@@ -1,5 +1,5 @@
 import 'dart:ui';
-import 'package:movie_project/data/local/shared_preferance.dart';
+import 'package:movie_project/data/local/shared_preferans.dart';
 
 class AppLocale {
 

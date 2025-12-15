@@ -24,6 +24,8 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "about": MessageLookupByLibrary.simpleMessage("О приложении"),
     "darkTheme": MessageLookupByLibrary.simpleMessage("Темная тема"),
+    "favorite": MessageLookupByLibrary.simpleMessage("Любимый"),
+    "favoriteTitle": MessageLookupByLibrary.simpleMessage("Любимые фильмы"),
     "genres": MessageLookupByLibrary.simpleMessage("Жанры"),
     "home": MessageLookupByLibrary.simpleMessage("Главная"),
     "lightTheme": MessageLookupByLibrary.simpleMessage("Светлая тема"),

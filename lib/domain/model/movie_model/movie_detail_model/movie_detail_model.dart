@@ -16,6 +16,7 @@ abstract class MovieDetailModel with _$MovieDetailModel {
     required String title,
     @JsonKey(name: 'vote_average') required double voteAverage,
     @JsonKey(name: 'vote_count') required int voteCount,
+    @JsonKey(name: 'release_date') required String releaseDate,
   }) = _MovieDetailModel;
 
   factory MovieDetailModel.fromJson(Map<String, dynamic> json) =>

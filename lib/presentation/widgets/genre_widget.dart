@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:movie_project/configs/constants/colors/colors.dart';
 import 'package:movie_project/domain/model/movie_model/genre_model/genre_model.dart';
 
 class GenreWidget extends StatelessWidget {

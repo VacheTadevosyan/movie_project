@@ -3,6 +3,7 @@
   "search": "Поиск",
   "settings": "Настройки",
   "home": "Главная",
+  "favoriteTitle": "Любимые фильмы",
   "selectLanguage": "Выбрать язык",
   "version": "Версия",
   "about": "О приложении",
@@ -13,5 +14,7 @@
   "searchResults": "Результаты поиска",
   "lightTheme": "Светлая тема",
   "darkTheme": "Темная тема",
-  "selectTheme": "Выберите тему"
+  "selectTheme": "Выберите тему",
+  "favorite": "Любимый"
+
 }
