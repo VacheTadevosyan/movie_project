@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:movie_project/configs/constants/Strings/strings.dart';
 import 'package:movie_project/configs/constants/colors/colors.dart';
@@ -48,8 +49,8 @@ class HomeScreen extends StatelessWidget {
               builderDelegate: PagedChildBuilderDelegate<MovieResults>(
                 firstPageProgressIndicatorBuilder: (context) =>
                     Center(child: CircularProgressIndicator()),
-                newPageProgressIndicatorBuilder: (context) => const Padding(
-                  padding: EdgeInsets.all(16),
+                newPageProgressIndicatorBuilder: (context) =>  Padding(
+                  padding: EdgeInsets.all(16.w),
                   child: Center(child: CircularProgressIndicator()),
                 ),
                 itemBuilder: (context, movie, index) {
@@ -57,12 +58,12 @@ class HomeScreen extends StatelessWidget {
                     return Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const SizedBox(height: 16),
+                        SizedBox(height: 16.0.h),
                         Padding(
-                          padding: const EdgeInsets.only(left: 16),
+                          padding: EdgeInsets.only(left: 16.w),
                           child: Text(
                             MovieStrings.popularMovies(context),
-                            style: const TextStyle(fontSize: 16),
+                            style: TextStyle(fontSize: 16.sp),
                           ),
                         ),
                         MoviesWidget(
@@ -106,7 +107,8 @@ class HomeScreen extends StatelessWidget {
         ),
 
         bottomNavigationBar: BottomAppBar(
-          height: MediaQuery.sizeOf(context).height / 9,
+          height: 90.h,
+          // height: 0.11.sh,
           color: MovieColors.darkBlue,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,

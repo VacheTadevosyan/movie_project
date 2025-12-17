@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie_project/configs/constants/colors/colors.dart';
 
 class TwoBottonWidget extends StatelessWidget {
@@ -30,35 +31,35 @@ class TwoBottonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.sizeOf(context).height/5,
+      height: 0.2.sh,
       decoration: BoxDecoration(
         color: MovieColors.darkBlue,
-        borderRadius: BorderRadius.all(Radius.circular(24)),
+        borderRadius: BorderRadius.all(Radius.circular(24.h)),
       ),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 24.0),
+        padding: EdgeInsets.symmetric(horizontal: 24.0.w),
         child: Column(
           mainAxisAlignment: .center,
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 4.0),
+              padding: EdgeInsets.symmetric(vertical: 4.0.h),
               child: ListTile(
                 leading: Icon(firstIcon, color: firstIconColor),
                 title: Text(
                   firstTitle,
-                  style: TextStyle(color: firstTitleColor),
+                  style: TextStyle(color: firstTitleColor, fontSize: 16.sp),
                 ),
                 onTap: firstCallBack,
               ),
             ),
             const Divider(color: MovieColors.grey),
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 4.0),
+              padding: EdgeInsets.symmetric(vertical: 4.0.h),
               child: ListTile(
                 leading: Icon(secondIcon, color: secondIconColor),
                 title: Text(
                   secondTitle,
-                  style: TextStyle(color: secondTitleColor),
+                  style: TextStyle(color: secondTitleColor, fontSize: 16.sp),
                 ),
                 onTap: secondCallBack,
               ),

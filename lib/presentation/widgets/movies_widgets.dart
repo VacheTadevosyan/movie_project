@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:movie_project/configs/constants/Strings/strings.dart';
 import 'package:movie_project/configs/constants/colors/colors.dart';
@@ -29,24 +30,24 @@ class MoviesWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(18.0),
+      padding: EdgeInsets.all(18.0.w),
       child: GestureDetector(
         onTap: callback,
         child: Container(
-          height: MediaQuery.sizeOf(context).height / 6,
-          width: MediaQuery.sizeOf(context).width,
+          height: 0.16.sh,
+          width: 1.sw,
           decoration: BoxDecoration(
             color: MovieColors.darkBlue,
-            borderRadius: BorderRadius.circular(24),
+            borderRadius: BorderRadius.circular(24.w),
           ),
           child: Row(
             children: [
               SizedBox(
-                width: MediaQuery.sizeOf(context).width / 4,
+                width: 0.25.sw,
                 child: ClipRRect(
-                  borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(24),
-                    bottomLeft: Radius.circular(24),
+                  borderRadius:  BorderRadius.only(
+                    topLeft: Radius.circular(24.0.w),
+                    bottomLeft: Radius.circular(24.0.w),
                   ),
 
                   child: pictureUrl != null
@@ -59,15 +60,15 @@ class MoviesWidget extends StatelessWidget {
                           alignment: Alignment.center,
                           child: SvgPicture.asset(
                             'assets/images/image_not_founded.svg',
-                            width: 60,
-                            height: 60,
+                            width: 60.w,
+                            height: 60.h,
                           ),
                         ),
                 ),
               ),
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.all(16.0),
+                  padding: EdgeInsets.all(8.0.h),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -84,10 +85,16 @@ class MoviesWidget extends StatelessWidget {
                                   maxLines: 2,
                                   softWrap: true,
                                   overflow: TextOverflow.ellipsis,
+                                  style: TextStyle(
+                                    fontSize: 14.sp,
+                                  )
                                 ),
-                                SizedBox(height: 4),
+                                SizedBox(height: 4.h),
                                 Text(
                                   date.length > 4 ? date.substring(0, 4) : date,
+                                  style: TextStyle(
+                                    fontSize: 12.sp,
+                                    color: MovieColors.grey,)
                                 ),
                               ],
                             ),
@@ -128,9 +135,9 @@ class MoviesWidget extends StatelessWidget {
                         child: Row(
                           children: [
                             Icon(Icons.star, color: MovieColors.yellow),
-                            Text(voteAverage.toString().substring(0, 3)),
-                            SizedBox(width: 6),
-                            Text("($voteCount)"),
+                            Text(voteAverage.toString().substring(0, 3), style: TextStyle(fontSize: 12.sp) ),
+                            SizedBox(width: 6.w),
+                            Text("($voteCount)", style: TextStyle(fontSize: 12.sp)),
                           ],
                         ),
                       ),

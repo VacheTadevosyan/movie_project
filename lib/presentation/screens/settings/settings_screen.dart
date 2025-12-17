@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie_project/configs/constants/Strings/strings.dart';
 import 'package:movie_project/configs/constants/colors/colors.dart';
 import 'package:movie_project/configs/routes/router.dart';
@@ -27,15 +28,15 @@ class SettingsScreen extends StatelessWidget {
       ),
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24.0),
+          padding: EdgeInsets.symmetric(horizontal: 24.0.h),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 16),
+              SizedBox(height: 16.h),
               Text(
                 MovieStrings.selectLanguage(context),
               ),
-              const SizedBox(height: 16),
+              SizedBox(height: 16.h),
               BlocBuilder<SettingsBloc, SettingsState>(
                 builder: (context, state) {
                   String currentLang = "ru";
@@ -75,11 +76,11 @@ class SettingsScreen extends StatelessWidget {
                         firstIcon: Icons.language,
                         secondIcon: Icons.language,
                       ),
-                      SizedBox(height: 30),
+                      SizedBox(height: 30.h),
                       Text(
                         MovieStrings.selectTheme(context)
                       ),
-                      const SizedBox(height: 16),
+                      SizedBox(height: 16.h),
                       TwoBottonWidget(
                         firstTitle: MovieStrings.lightTheme(context),
                         secondTitle: MovieStrings.darkTheme(context),
@@ -120,20 +121,20 @@ class SettingsScreen extends StatelessWidget {
               Container(
                 height: 72,
                 decoration: BoxDecoration(
-                  color: const Color(0x101829FF),
-                  borderRadius: BorderRadius.all(Radius.circular(24)),
+                  color: MovieColors.darkBlue,
+                  borderRadius: BorderRadius.all(Radius.circular(24.w)),
                 ),
                 child: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 4.0),
                   child: ListTile(
-                    leading: Icon(Icons.info_outline, color:  theme.colorScheme.onSurface),
+                    leading: Icon(Icons.info_outline, color:  theme.colorScheme.onSurface, size: 24.w),
                     title: Text(
                       MovieStrings.version(context),
-                      style: TextStyle(color:  theme.colorScheme.onSurface),
+                      style: TextStyle(color:  theme.colorScheme.onSurface, fontSize: 16.sp),
                     ),
                     trailing: Text(
                       "1.0.0",
-                      style: TextStyle(color:  theme.colorScheme.onSurface, fontSize: 16),
+                      style: TextStyle(color:  theme.colorScheme.onSurface, fontSize: 14.sp),
                     ),
                   ),
                 ),
@@ -144,7 +145,7 @@ class SettingsScreen extends StatelessWidget {
 
       ),
       bottomNavigationBar: BottomAppBar(
-        height: MediaQuery.sizeOf(context).height / 9,
+        height: 90.h,
         color: const Color(0x101829FF),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,

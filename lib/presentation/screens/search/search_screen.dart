@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:movie_project/configs/constants/Strings/strings.dart';
 import 'package:movie_project/configs/constants/colors/colors.dart';
@@ -52,7 +53,7 @@ class SearchScreen extends StatelessWidget {
           builder: (context, state, fetchNextPage) {
             return Column(
               children: [
-                const SizedBox(height: 8),
+                SizedBox(height: 8.h),
                 SearchBarWidget(
                   searchController: controller,
                   function: (value) {
@@ -62,7 +63,7 @@ class SearchScreen extends StatelessWidget {
                     pagingController.refresh();
                   },
                 ),
-                const SizedBox(height: 8),
+                SizedBox(height: 8.h),
 
                 Expanded(
                   child: PagedListView<int, MovieResults>(
@@ -73,10 +74,10 @@ class SearchScreen extends StatelessWidget {
                         child: Column(
                           mainAxisAlignment: .center,
                           children: [
-                            Icon(Icons.search,size: 100,),
+                            Icon(Icons.search,size: 100.w,),
                             Text(
                               "Search movies...",
-                              style: TextStyle(fontSize: 18),
+                              style: TextStyle(fontSize: 18.sp),
                             ),
                           ],
                         ),
@@ -92,12 +93,12 @@ class SearchScreen extends StatelessWidget {
                           return Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              const SizedBox(height: 16),
+                              SizedBox(height: 16.h),
                               Padding(
-                                padding: const EdgeInsets.only(left: 16),
+                                padding: EdgeInsets.only(left: 16.w),
                                 child: Text(
                                   MovieStrings.searchResults(context),
-                                  style: const TextStyle(fontSize: 16),
+                                  style: TextStyle(fontSize: 16.sp),
                                 ),
                               ),
                               MoviesWidget(
@@ -145,7 +146,7 @@ class SearchScreen extends StatelessWidget {
       ),
 
       bottomNavigationBar: BottomAppBar(
-        height: MediaQuery.sizeOf(context).height / 9,
+        height: 90.h,
         color: Color(0x101829FF),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,

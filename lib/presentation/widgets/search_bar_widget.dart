@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SearchBarWidget extends StatelessWidget {
   SearchBarWidget({super.key, required this.searchController, this.function});
@@ -14,14 +15,14 @@ class SearchBarWidget extends StatelessWidget {
     return Column(
       children: [
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24.0),
+          padding: EdgeInsets.symmetric(horizontal: 24.0.h),
           child: SearchBar(
             hintText: "Search movies...",
             leading: Icon(Icons.search),
             controller: searchController,
             textInputAction: TextInputAction.search,
             shape: WidgetStateProperty.all(
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(18.w)),
             ),
             backgroundColor: WidgetStateProperty.all(theme.cardColor),
             onChanged: (value) {

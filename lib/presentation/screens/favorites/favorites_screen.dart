@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie_project/configs/constants/Strings/strings.dart';
 import 'package:movie_project/configs/constants/colors/colors.dart';
 import 'package:movie_project/configs/routes/router.dart';
@@ -56,9 +57,7 @@ class FavoritesScreen extends StatelessWidget {
       ),
 
       bottomNavigationBar: BottomAppBar(
-        height: MediaQuery
-            .sizeOf(context)
-            .height / 9,
+        height: 90.h,
         color: MovieColors.darkBlue,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,

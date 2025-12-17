@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie_project/configs/constants/Strings/strings.dart';
 import 'package:movie_project/configs/constants/colors/colors.dart';
 import 'package:movie_project/data/repository/rating_repository.dart';
@@ -25,16 +26,16 @@ Widget movieDetailsUI({
                   ClipRRect(
                     child: Image.network(
                       MovieStrings.imageBaseUrl + movie.backdropPath,
-                      height: MediaQuery.sizeOf(context).height / 3.5,
+                      height: 0.285.sh,
                       fit: BoxFit.cover,
                     ),
                   ),
                   Positioned(
-                    bottom: 0,
-                    left: 0,
-                    right: 0,
+                    bottom: 0.h,
+                    left: 0.w,
+                    right: 0.w,
                     child: Container(
-                      height: MediaQuery.sizeOf(context).height / 3.5,
+                      height: 0.285.sh,
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
                           begin: AlignmentGeometry.topCenter,
@@ -48,8 +49,8 @@ Widget movieDetailsUI({
                     ),
                   ),
                   Positioned(
-                    bottom: 0,
-                    left: 32,
+                    bottom: 0.h,
+                    left: 32.w,
                     child: Row(
                       crossAxisAlignment: .end,
                       children: [
@@ -57,28 +58,28 @@ Widget movieDetailsUI({
                           borderRadius: BorderRadius.all(Radius.circular(24)),
                           child: Image.network(
                             MovieStrings.imageBaseUrl + movie.posterPath,
-                            width: MediaQuery.sizeOf(context).width / 3.5,
+                            width: 0.285.sw,
                           ),
                         ),
-                        SizedBox(width: 28),
+                        SizedBox(width: 28.w),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             ConstrainedBox(
                               constraints: BoxConstraints(
-                                maxWidth: MediaQuery.of(context).size.width / 2,
+                                maxWidth: 0.5.sw
                               ),
                               child: Text(
                                 movie.title,
                                 maxLines: 2,
                                 overflow: TextOverflow.ellipsis,
                                 softWrap: true,
-                                style: TextStyle(fontSize: 18),
+                                style: TextStyle(fontSize: 18.sp),
                               ),
                             ),
                             ConstrainedBox(
                               constraints: BoxConstraints(
-                                maxWidth: MediaQuery.of(context).size.width / 2,
+                                  maxWidth: 0.5.sw
                               ),
                               child: Text(
                                 movie.tagline,
@@ -86,7 +87,7 @@ Widget movieDetailsUI({
                                 overflow: TextOverflow.ellipsis,
                                 softWrap: true,
                                 style: TextStyle(
-                                  fontSize: 15,
+                                  fontSize: 15.sp,
                                   color: MovieColors.grey,
                                 ),
                               ),
@@ -98,7 +99,7 @@ Widget movieDetailsUI({
                   ),
                 ],
               ),
-              SizedBox(height: 48),
+              SizedBox(height: 48.h),
               Row(
                 children: [
                   InformationWidget(
@@ -115,10 +116,10 @@ Widget movieDetailsUI({
                 ],
               ),
               Padding(
-                padding: const EdgeInsets.all(24.0),
+                padding: EdgeInsets.all(24.0.w),
                 child: RatingBar.builder(
                   allowHalfRating: true,
-                  itemSize: 36,
+                  itemSize: 30.w,
                   initialRating: movie.voteAverage / 2,
                   minRating: 0.5,
                   glow: false,
@@ -135,26 +136,25 @@ Widget movieDetailsUI({
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                padding: EdgeInsets.symmetric(horizontal: 16.0.h),
                 child: Column(
                   crossAxisAlignment: .start,
                   children: [
-                    SizedBox(height: 20),
                     Text(
                       MovieStrings.genres(context),
-                      style: TextStyle(fontSize: 20),
+                      style: TextStyle(fontSize: 20.sp),
                     ),
-                    SizedBox(height: 20),
+                    SizedBox(height: 20.h),
                     GenreWidget(genre: movie.genres),
-                    SizedBox(height: 20),
+                    SizedBox(height: 20.h),
                     Text(
                       MovieStrings.overview(context),
-                      style: TextStyle(fontSize: 20),
+                      style: TextStyle(fontSize: 20.sp),
                     ),
-                    SizedBox(height: 16),
+                    SizedBox(height: 16.h),
                     Text(
                       movie.overview,
-                      style: TextStyle(fontSize: 16, color: MovieColors.grey),
+                      style: TextStyle(fontSize: 16.sp, color: MovieColors.grey),
                     ),
                   ],
                 ),
@@ -169,8 +169,8 @@ Widget movieDetailsUI({
             mainAxisAlignment: .center,
             crossAxisAlignment: .center,
             children: [
-              Icon(Icons.mood_bad_rounded, size: 100),
-              Text("Movie not founded", style: TextStyle(fontSize: 24)),
+              Icon(Icons.mood_bad_rounded, size: 100.w),
+              Text("Movie not founded", style: TextStyle(fontSize: 24.sp)),
             ],
           ),
         );
