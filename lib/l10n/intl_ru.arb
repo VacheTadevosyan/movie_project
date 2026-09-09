@@ -3,8 +3,18 @@
   "search": "Поиск",
   "settings": "Настройки",
   "home": "Главная",
+  "favoriteTitle": "Любимые фильмы",
   "selectLanguage": "Выбрать язык",
   "version": "Версия",
   "about": "О приложении",
-  "popularMovies": "Популярные фильмы"
+  "popularMovies": "Популярные фильмы",
+  "movieDetails": "О фильме",
+  "overview": "Описание",
+  "genres": "Жанры",
+  "searchResults": "Результаты поиска",
+  "lightTheme": "Светлая тема",
+  "darkTheme": "Темная тема",
+  "selectTheme": "Выберите тему",
+  "favorite": "Любимый"
+
 }

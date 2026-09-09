@@ -1,6 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+
 import 'intl/messages_all.dart';
 
 // **************************************************************************
@@ -79,6 +80,16 @@ class S {
     return Intl.message('Home', name: 'home', desc: '', args: []);
   }
 
+  /// `Favorite Movies`
+  String get favoriteTitle {
+    return Intl.message(
+      'Favorite Movies',
+      name: 'favoriteTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Select Language`
   String get selectLanguage {
     return Intl.message(
@@ -107,6 +118,61 @@ class S {
       desc: '',
       args: [],
     );
+  }
+
+  /// `Movie Details`
+  String get movieDetails {
+    return Intl.message(
+      'Movie Details',
+      name: 'movieDetails',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Overview`
+  String get overview {
+    return Intl.message('Overview', name: 'overview', desc: '', args: []);
+  }
+
+  /// `Genres`
+  String get genres {
+    return Intl.message('Genres', name: 'genres', desc: '', args: []);
+  }
+
+  /// `Search Results`
+  String get searchResults {
+    return Intl.message(
+      'Search Results',
+      name: 'searchResults',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Light Theme`
+  String get lightTheme {
+    return Intl.message('Light Theme', name: 'lightTheme', desc: '', args: []);
+  }
+
+  /// `Dark Theme`
+  String get darkTheme {
+    return Intl.message('Dark Theme', name: 'darkTheme', desc: '', args: []);
+  }
+
+  /// `Select Theme`
+  String get selectTheme {
+    return Intl.message(
+      'Select Theme',
+      name: 'selectTheme',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Favorite`
+  String get favorite {
+    return Intl.message('Favorite', name: 'favorite', desc: '', args: []);
   }
 }
 

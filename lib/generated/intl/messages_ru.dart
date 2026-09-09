@@ -23,11 +23,20 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "about": MessageLookupByLibrary.simpleMessage("О приложении"),
+    "darkTheme": MessageLookupByLibrary.simpleMessage("Темная тема"),
+    "favorite": MessageLookupByLibrary.simpleMessage("Любимый"),
+    "favoriteTitle": MessageLookupByLibrary.simpleMessage("Любимые фильмы"),
+    "genres": MessageLookupByLibrary.simpleMessage("Жанры"),
     "home": MessageLookupByLibrary.simpleMessage("Главная"),
+    "lightTheme": MessageLookupByLibrary.simpleMessage("Светлая тема"),
+    "movieDetails": MessageLookupByLibrary.simpleMessage("О фильме"),
     "movieExplorer": MessageLookupByLibrary.simpleMessage("Фильмы"),
+    "overview": MessageLookupByLibrary.simpleMessage("Описание"),
     "popularMovies": MessageLookupByLibrary.simpleMessage("Популярные фильмы"),
     "search": MessageLookupByLibrary.simpleMessage("Поиск"),
+    "searchResults": MessageLookupByLibrary.simpleMessage("Результаты поиска"),
     "selectLanguage": MessageLookupByLibrary.simpleMessage("Выбрать язык"),
+    "selectTheme": MessageLookupByLibrary.simpleMessage("Выберите тему"),
     "settings": MessageLookupByLibrary.simpleMessage("Настройки"),
     "version": MessageLookupByLibrary.simpleMessage("Версия"),
   };

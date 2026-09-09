@@ -1,4 +1,9 @@
 import 'package:dio/dio.dart';
 
-final dio = Dio();
-
+final dio = Dio(
+  BaseOptions(
+    headers: {
+      'Content-Type': 'application/json;charset=utf-8',
+    },
+  ),
+);

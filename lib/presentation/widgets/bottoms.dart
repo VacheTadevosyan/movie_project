@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:movie_project/configs/constants/colors/colors.dart';
 
 class Bottoms extends StatelessWidget {
   const Bottoms({
@@ -6,8 +8,8 @@ class Bottoms extends StatelessWidget {
     required this.icon,
     this.text = ' ',
     required this.onTap,
-    this.textColor = Colors.black,
-    this.iconColor = Colors.black,
+    this.textColor = MovieColors.black,
+    this.iconColor = MovieColors.black,
   });
 
   final IconData icon;
@@ -20,8 +22,17 @@ class Bottoms extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        IconButton(onPressed: onTap, icon: Icon(icon, color: iconColor,),),
-        Text(text, style: TextStyle(color: textColor)),
+        IconButton(
+          onPressed: onTap,
+          icon: Icon(icon, color: iconColor, size: 24.h),
+        ),
+        GestureDetector(
+          onTap: onTap,
+          child: Text(
+            text,
+            style: TextStyle(color: textColor, fontSize: 14.sp),
+          ),
+        ),
       ],
     );
   }

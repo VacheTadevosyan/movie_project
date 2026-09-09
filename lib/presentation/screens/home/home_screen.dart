@@ -1,9 +1,13 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:movie_project/configs/constants/Strings/strings.dart';
 import 'package:movie_project/configs/constants/colors/colors.dart';
 import 'package:movie_project/configs/routes/router.dart';
+import 'package:movie_project/data/repository/movie_repository.dart';
+import 'package:movie_project/domain/model/movie_model/movie_results/movie_results.dart';
 import 'package:movie_project/presentation/widgets/bottoms.dart';
 import 'package:movie_project/presentation/widgets/movies_widgets.dart';
 
@@ -11,61 +15,100 @@ import 'bloc/home_bloc.dart';
 
 @RoutePage()
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  HomeScreen({super.key});
+
+  final PagingController<int, MovieResults> pagingController =
+      PagingController<int, MovieResults>(
+        getNextPageKey: (state) =>
+            state.lastPageIsEmpty ? null : state.nextIntPageKey,
+        fetchPage: (pageKey) =>
+            MoviesRepository().getMovieResults(page: pageKey),
+      );
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final currentRoute = context.router.current.name;
     return BlocProvider(
       create: (context) => HomeBloc()..add(const HomeEvent.load()),
       child: Scaffold(
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           title: Text(
             MovieStrings.homeTitle(context),
-            style: TextStyle(color: MovieColors.whiteText),
           ),
           backgroundColor: MovieColors.darkBlue,
         ),
-        body: BlocBuilder<HomeBloc, HomeState>(
-          builder: (context, state) {
-            return state.when(
-              initial: () => const SizedBox(),
-              load: () => const Center(child: CircularProgressIndicator()),
-              loaded: (movies) => ListView.builder(
-                itemCount: 7,
-                itemBuilder: (context, index) {
+
+        body: PagingListener<int, MovieResults>(
+          controller: pagingController,
+          builder: (context, state, fetchNextPage) {
+            return PagedListView<int, MovieResults>(
+              state: state,
+              fetchNextPage: fetchNextPage,
+              builderDelegate: PagedChildBuilderDelegate<MovieResults>(
+                firstPageProgressIndicatorBuilder: (context) =>
+                    Center(child: CircularProgressIndicator()),
+                newPageProgressIndicatorBuilder: (context) =>  Padding(
+                  padding: EdgeInsets.all(16.w),
+                  child: Center(child: CircularProgressIndicator()),
+                ),
+                itemBuilder: (context, movie, index) {
                   if (index == 0) {
-                    return Padding(
-                      padding: const EdgeInsets.only(top: 16, left: 16),
-                      child: Text(
-                        MovieStrings.popularMovies(context),
-                        style: TextStyle(fontSize: 16),
-                      ),
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(height: 16.0.h),
+                        Padding(
+                          padding: EdgeInsets.only(left: 16.w),
+                          child: Text(
+                            MovieStrings.popularMovies(context),
+                            style: TextStyle(fontSize: 16.sp),
+                          ),
+                        ),
+                        MoviesWidget(
+                          title: movie.title,
+                          date: movie.releaseDate,
+                          voteAverage: movie.voteAverage,
+                          voteCount: movie.voteCount,
+                          pictureUrl: movie.posterPath ?? "",
+                          callback: () {
+                            context.pushRoute(
+                              MovieInfoRoute(
+                                movieID: movie.id,
+                                releaseDate: movie.releaseDate,
+                              ),
+                            );
+                          }, id: movie.id,
+                        ),
+                      ],
                     );
                   }
-                  final movie = movies.results[index - 1];
+
                   return MoviesWidget(
                     title: movie.title,
                     date: movie.releaseDate,
                     voteAverage: movie.voteAverage,
                     voteCount: movie.voteCount,
-                    pictureUrl: movie.posterPath,
+                    pictureUrl: movie.posterPath ?? '',
+                    callback: () {
+                      context.pushRoute(
+                        MovieInfoRoute(
+                          movieID: movie.id,
+                          releaseDate: movie.releaseDate,
+                        ),
+                      );
+                    }, id: movie.id,
                   );
                 },
-              ),
-              error: (String massage) => Center(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 32.0),
-                  child: Text(
-                    massage,
-                    style: TextStyle(color: MovieColors.whiteText),
-                  ),
-                ),
               ),
             );
           },
         ),
+
         bottomNavigationBar: BottomAppBar(
-          height: MediaQuery.sizeOf(context).height / 9,
+          height: 90.h,
+          // height: 0.11.sh,
           color: MovieColors.darkBlue,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -74,8 +117,12 @@ class HomeScreen extends StatelessWidget {
                 icon: Icons.home,
                 onTap: () {},
                 text: MovieStrings.homeBottom(context),
-                textColor: MovieColors.whiteText,
-                iconColor: MovieColors.whiteItem,
+                textColor: currentRoute == HomeRoute.name
+                    ? MovieColors.lightBlue
+                    : theme.colorScheme.onSurface,
+                iconColor: currentRoute == HomeRoute.name
+                    ? MovieColors.lightBlue
+                    : theme.colorScheme.onSurface,
               ),
               Bottoms(
                 icon: Icons.search,
@@ -83,17 +130,26 @@ class HomeScreen extends StatelessWidget {
                   context.pushRoute(SearchRoute());
                 },
                 text: MovieStrings.searchBottom(context),
-                textColor: MovieColors.whiteText,
-                iconColor: MovieColors.whiteItem,
+                textColor: theme.colorScheme.onSurface,
+                iconColor: theme.colorScheme.onSurface,
+              ),
+              Bottoms(
+                icon: Icons.favorite,
+                onTap: () {
+                  context.pushRoute(FavoritesRoute());
+                },
+                text: MovieStrings.favoriteBottom(context),
+                textColor: theme.colorScheme.onSurface,
+                iconColor: theme.colorScheme.onSurface,
               ),
               Bottoms(
                 icon: Icons.settings,
                 onTap: () {
-                  context.router.replace(SettingsRoute());
+                  context.router.replace(const SettingsRoute());
                 },
                 text: MovieStrings.settingsBottom(context),
-                textColor: MovieColors.whiteText,
-                iconColor: MovieColors.whiteItem,
+                textColor: theme.colorScheme.onSurface,
+                iconColor: theme.colorScheme.onSurface,
               ),
             ],
           ),

@@ -396,7 +396,7 @@ return error(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  load,TResult Function( MovieResultsResponse movie)?  loaded,TResult Function( String massage)?  error,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  load,TResult Function( List<MovieResults> movie)?  loaded,TResult Function( String massage)?  error,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case Initial() when initial != null:
 return initial();case MovieLoadState() when load != null:
@@ -420,7 +420,7 @@ return error(_that.massage);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  load,required TResult Function( MovieResultsResponse movie)  loaded,required TResult Function( String massage)  error,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  load,required TResult Function( List<MovieResults> movie)  loaded,required TResult Function( String massage)  error,}) {final _that = this;
 switch (_that) {
 case Initial():
 return initial();case MovieLoadState():
@@ -443,7 +443,7 @@ return error(_that.massage);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  load,TResult? Function( MovieResultsResponse movie)?  loaded,TResult? Function( String massage)?  error,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  load,TResult? Function( List<MovieResults> movie)?  loaded,TResult? Function( String massage)?  error,}) {final _that = this;
 switch (_that) {
 case Initial() when initial != null:
 return initial();case MovieLoadState() when load != null:
@@ -525,10 +525,16 @@ String toString() {
 
 
 class MovieLoadedState implements HomeState {
-  const MovieLoadedState({required this.movie});
+  const MovieLoadedState({required final  List<MovieResults> movie}): _movie = movie;
   
 
- final  MovieResultsResponse movie;
+ final  List<MovieResults> _movie;
+ List<MovieResults> get movie {
+  if (_movie is EqualUnmodifiableListView) return _movie;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_movie);
+}
+
 
 /// Create a copy of HomeState
 /// with the given fields replaced by the non-null parameter values.
@@ -540,12 +546,12 @@ $MovieLoadedStateCopyWith<MovieLoadedState> get copyWith => _$MovieLoadedStateCo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is MovieLoadedState&&(identical(other.movie, movie) || other.movie == movie));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is MovieLoadedState&&const DeepCollectionEquality().equals(other._movie, _movie));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,movie);
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_movie));
 
 @override
 String toString() {
@@ -560,11 +566,11 @@ abstract mixin class $MovieLoadedStateCopyWith<$Res> implements $HomeStateCopyWi
   factory $MovieLoadedStateCopyWith(MovieLoadedState value, $Res Function(MovieLoadedState) _then) = _$MovieLoadedStateCopyWithImpl;
 @useResult
 $Res call({
- MovieResultsResponse movie
+ List<MovieResults> movie
 });
 
 
-$MovieResultsResponseCopyWith<$Res> get movie;
+
 
 }
 /// @nodoc
@@ -579,21 +585,12 @@ class _$MovieLoadedStateCopyWithImpl<$Res>
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? movie = null,}) {
   return _then(MovieLoadedState(
-movie: null == movie ? _self.movie : movie // ignore: cast_nullable_to_non_nullable
-as MovieResultsResponse,
+movie: null == movie ? _self._movie : movie // ignore: cast_nullable_to_non_nullable
+as List<MovieResults>,
   ));
 }
 
-/// Create a copy of HomeState
-/// with the given fields replaced by the non-null parameter values.
-@override
-@pragma('vm:prefer-inline')
-$MovieResultsResponseCopyWith<$Res> get movie {
-  
-  return $MovieResultsResponseCopyWith<$Res>(_self.movie, (value) {
-    return _then(_self.copyWith(movie: value));
-  });
-}
+
 }
 
 /// @nodoc

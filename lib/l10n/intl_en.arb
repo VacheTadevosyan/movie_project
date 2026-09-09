@@ -3,8 +3,17 @@
   "search": "Search",
   "settings": "Settings",
   "home": "Home",
+  "favoriteTitle": "Favorite Movies",
   "selectLanguage": "Select Language",
   "version": "Version",
   "about": "About",
-  "popularMovies": "Popular Movies"
+  "popularMovies": "Popular Movies",
+  "movieDetails": "Movie Details",
+  "overview": "Overview",
+  "genres": "Genres",
+  "searchResults": "Search Results",
+  "lightTheme": "Light Theme",
+  "darkTheme": "Dark Theme",
+  "selectTheme": "Select Theme",
+  "favorite": "Favorite"
 }

@@ -8,12 +8,22 @@ abstract class MovieStrings {
   static String homeTitle(BuildContext context) => S.of(context).movieExplorer;
   static String searchTitle(BuildContext context) => S.of(context).search;
   static String settingsTitle(BuildContext context) => S.of(context).settings;
+  static String movieInfoTitle(BuildContext context) => S.of(context).movieDetails;
+  static String favoriteTitle(BuildContext context) => S.of(context).favoriteTitle;
+
   static String popularMovies(BuildContext context) => S.of(context).popularMovies;
+  static String overview(BuildContext context) => S.of(context).overview;
+  static String genres(BuildContext context) => S.of(context).genres;
+  static String searchResults(BuildContext context) => S.of(context).searchResults;
+  static String lightTheme(BuildContext context) => S.of(context).lightTheme;
+  static String darkTheme(BuildContext context) => S.of(context).darkTheme;
+  static String selectTheme(BuildContext context) => S.of(context).selectTheme;
 
   ///BOTTOMS
   static String homeBottom(BuildContext context) => S.of(context).home;
   static String searchBottom(BuildContext context) => S.of(context).search;
   static String settingsBottom(BuildContext context) => S.of(context).settings;
+  static String favoriteBottom(BuildContext context) => S.of(context).favorite;
 
   ///SETTINGS
   static String about(BuildContext context) => S.of(context).about;
@@ -25,4 +35,5 @@ abstract class MovieStrings {
   static const String apiKey = '983f06a48e7c71d8550f97ea1e6b30d3';
   static const String imageBaseUrl = 'https://image.tmdb.org/t/p/w500';
   static const String popularMovie = '/movie/popular';
+  static const String movie = '/movie/{id}';
 }
